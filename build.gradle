@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'application'
+    id 'org.gradle.java.experimental-jigsaw' version '0.1.1'
+    id 'org.springframework.boot' version '2.1.1.RELEASE'
+    id 'io.spring.dependency-management' version "1.0.6.RELEASE"
+}
+apply plugin: 'io.spring.dependency-management'
+
+group 'pickjob'
+version '0.0.1'
+mainClassName = 'app.Application'
+sourceCompatibility = 11
+targetCompatibility = 11
+javaModule.name = 'pickjob.spring.starter'
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+}
+
+repositories {
+    maven {
+        url "https://maven.aliyun.com/repository/central"
+    }
+}
+
+bootJar {
+    mainClassName = 'app.Application'
+}
+
+sourceSets {
+    main {
+        output.resourcesDir = file("$buildDir/classes/java/main")
+    }
+    test {
+        output.resourcesDir = file("$buildDir/classes/java/test/")
+    }
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/java/main/")
+        testOutputDir = file("$buildDir/classes/java/test/")
+    }
+}
