@@ -6,6 +6,8 @@ module pickjob.spring.starter {
     requires spring.boot;
     requires spring.boot.autoconfigure;
 
+    requires org.apache.logging.log4j;
+
     opens app to spring.core
                , spring.beans
                , spring.context
