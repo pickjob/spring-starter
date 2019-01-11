@@ -27,4 +27,7 @@ module pickjob.spring.starter {
                           , spring.aop
                           , spring.web
                           ;
+    opens app.service.scheduled to spring.beans
+                                 , spring.context
+                                 ;
 }
