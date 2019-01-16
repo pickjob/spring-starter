@@ -3,7 +3,7 @@ plugins {
     id 'idea'
     id 'application'
     id 'org.gradle.java.experimental-jigsaw' version '0.1.1'
-    id 'org.springframework.boot' version '2.1.1.RELEASE'
+    id 'org.springframework.boot' version '2.1.2.RELEASE'
     id 'io.spring.dependency-management' version "1.0.6.RELEASE"
 }
 apply plugin: 'io.spring.dependency-management'
@@ -11,8 +11,6 @@ apply plugin: 'io.spring.dependency-management'
 group 'pickjob'
 version '0.0.1'
 mainClassName = 'app.Application'
-sourceCompatibility = 11
-targetCompatibility = 11
 javaModule.name = 'pickjob.spring.starter'
 
 configurations {
@@ -27,8 +25,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
-
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 repositories {
@@ -36,26 +32,49 @@ repositories {
         url "https://maven.aliyun.com/repository/central"
     }
 }
-
-bootJar {
-    mainClassName = 'app.Application'
+/*
+ *  Plugin: java配置
+ */
+compileJava {
+    sourceCompatibility = 11
+    targetCompatibility = 11
+    options.encoding = 'UTF-8'
 }
-
-sourceSets {
-    main {
-        output.resourcesDir = file("$buildDir/classes/java/main")
-    }
-    test {
-        output.resourcesDir = file("$buildDir/classes/java/test/")
-    }
+compileTestJava {
+    sourceCompatibility = 11
+    targetCompatibility = 11
+    options.encoding = 'UTF-8'
 }
-
+processResources {
+    destinationDir = sourceSets.main.java.outputDir
+}
+processTestResources {
+    destinationDir = sourceSets.test.java.outputDir
+}
+/*
+ * Plugin: Appliction
+ */
+run {
+    main = "${mainClassName}"
+}
+/*
+ *  Plugin: idea 配置
+ */
 idea {
     module {
         downloadJavadoc = true
         downloadSources = true
         inheritOutputDirs = false
-        outputDir = file("$buildDir/classes/java/main/")
-        testOutputDir = file("$buildDir/classes/java/test/")
+        outputDir = sourceSets.main.java.outputDir
+        testOutputDir = sourceSets.test.java.outputDir
     }
+}
+/*
+ *  Plugin: Spring Boot 配置
+ */
+bootRun {
+    main = "${mainClassName}"
+}
+bootJar {
+    mainClassName = "${mainClassName}"
 }

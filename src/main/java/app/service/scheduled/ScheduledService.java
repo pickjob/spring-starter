@@ -16,6 +16,6 @@ public class ScheduledService {
     @Scheduled(fixedRate = 5000)
     public void scheduledTask() {
         logger.info("hello");
-        throw new RuntimeException("abc");
+//        throw new RuntimeException("abc");
     }
 }
