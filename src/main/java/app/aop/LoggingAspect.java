@@ -6,6 +6,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -17,14 +18,11 @@ import java.util.UUID;
  */
 @Component
 @Aspect
-public class LoggingAspect {
+public class LoggingAspect implements Ordered {
     private static Logger logger = LogManager.getLogger(LoggingAspect.class);
 
-    @Pointcut("execution(public * app.controller..*(..))")
-    private void loggingPointcut() {}
-
-    @Around("app.aop.LoggingAspect.loggingPointcut()")
-    public Object doBasicProfiling(ProceedingJoinPoint pjp) throws Throwable {
+    @Around("execution(public * app.controller..*(..))")
+    public Object accessLogging(ProceedingJoinPoint pjp) throws Throwable {
         String id = UUID.randomUUID().toString();
         logger.info("{} entering {} {}", id, pjp.toLongString());
         Object retVal = pjp.proceed();
@@ -32,4 +30,8 @@ public class LoggingAspect {
         return retVal;
     }
 
+    @Override
+    public int getOrder() {
+        return 1;
+    }
 }

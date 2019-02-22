@@ -9,6 +9,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String hello(Model model) {
+//        throw new RuntimeException("exception happened");
         return "hello world";
     }
 }
