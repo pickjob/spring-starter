@@ -1,6 +1,7 @@
 package app.aop;
 
 import app.common.annotation.DataSourceKey;
+import app.common.keys.DataSourceKeyEnum;
 import app.util.DataSourceHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,6 +26,7 @@ public class DataSourceAspect implements Ordered {
         logger.info("routing datasource to {}", key.value());
         DataSourceHolder.setDataSourceKey(key.value());
         Object retVal = pjp.proceed();
+        DataSourceHolder.setDataSourceKey(DataSourceKeyEnum.SCHEMA_A);
         return retVal;
     }
 

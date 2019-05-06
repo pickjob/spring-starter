@@ -1,15 +1,17 @@
 package app.controller;
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author pickjob@126.com
+ * @time 2019-04-28
+ **/
 @RestController
-public class HelloController {
+public class HomeController {
 
     @RequestMapping("/")
-    public String hello(Model model) {
-//        throw new RuntimeException("exception happened");
-        return "hello world";
+    public String hello() {
+        return "Hello, World";
     }
 }

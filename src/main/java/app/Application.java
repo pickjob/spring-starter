@@ -1,6 +1,6 @@
 package app;
 
-import app.service.StudentService;
+import app.service.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,13 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 )
 public class Application implements ApplicationRunner {
     private static Logger logger = LogManager.getLogger(Application.class);
-    @Autowired private StudentService studentService;
+    @Autowired private PaymentService paymentService;
+    @Autowired private OfficeService officeService;
+    @Autowired private EmployeeService employeeService;
+    @Autowired private OrderService orderService;
+    @Autowired private ProductLineService productlineService;
+    @Autowired private ProductService productService;
+    @Autowired private OrderDetailService orderDetailService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -23,7 +29,14 @@ public class Application implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        logger.info("Server is running ...");
-        studentService.doSomething();
+        officeService.listAllOffices();
+        employeeService.listAllEmployees();
+        orderService.listAllOrders();
+        productlineService.listAllProductlines();
+        productService.listAllProducts();
+        orderDetailService.listAllOrderDetails();
+        paymentService.listAllPayments();
+        // show routing DataSource
+        paymentService.showRoutingDataSource();
     }
 }

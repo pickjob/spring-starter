@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -18,6 +19,7 @@ import java.util.Map;
  * @time 2019-02-22
  */
 @Configuration
+@EnableTransactionManagement
 public class DataSourceConfiguration {
 
     @Bean
