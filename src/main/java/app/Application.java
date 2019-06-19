@@ -22,6 +22,7 @@ public class Application implements ApplicationRunner {
     @Autowired private ProductLineService productlineService;
     @Autowired private ProductService productService;
     @Autowired private OrderDetailService orderDetailService;
+    @Autowired private CustomerService customerService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -29,14 +30,6 @@ public class Application implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        officeService.listAllOffices();
-        employeeService.listAllEmployees();
-        orderService.listAllOrders();
-        productlineService.listAllProductlines();
-        productService.listAllProducts();
-        orderDetailService.listAllOrderDetails();
-        paymentService.listAllPayments();
-        // show routing DataSource
-        paymentService.showRoutingDataSource();
+        customerService.listAllCustomers();
     }
 }
