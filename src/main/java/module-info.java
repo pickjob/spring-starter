@@ -13,12 +13,14 @@ module pickjob.spring.starter {
     requires spring.boot.autoconfigure;
 
     requires org.apache.logging.log4j;
-    requires slf4j.api;
     requires org.aspectj.weaver;
 
     requires com.zaxxer.hikari;
-    requires mybatis;
-    requires mybatis.spring;
+    requires org.mybatis;
+    requires org.mybatis.spring;
+    requires mybatis.plus.core;
+    requires mybatis.plus.annotation;
+    requires mybatis.plus.extension;
 
     opens app to spring.core
             , spring.beans
@@ -43,7 +45,7 @@ module pickjob.spring.starter {
             , spring.beans
             , spring.aop
             ;
-    opens app.entity to mybatis
+    opens app.entity to org.mybatis
             ;
     opens app.service to spring.core
             , spring.beans

@@ -16,8 +16,6 @@ public class EmployeeService {
     @Autowired private EmployeeDao employeeDao;
 
     public void listAllEmployees() {
-        employeeDao.listAllEmployees().forEach( x -> {
-            logger.info("Employee: {}", x);
-        });
+        employeeDao.selectList(null);
     }
 }

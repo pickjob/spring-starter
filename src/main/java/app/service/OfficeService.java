@@ -16,8 +16,6 @@ public class OfficeService {
     @Autowired private OfficeDao officeDao;
 
     public void listAllOffices() {
-        officeDao.listAllOffices().forEach( x -> {
-            logger.info("Office: {}", x);
-        });
+        officeDao.selectList(null);
     }
 }

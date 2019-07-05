@@ -1,5 +1,7 @@
 package app.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -7,6 +9,7 @@ import java.util.Date;
  * @author pickjob@126.com
  * @time 2019-04-28
  **/
+@TableName("payments")
 public class Payment {
     private Integer customerNumber;
     private String checkNumber;

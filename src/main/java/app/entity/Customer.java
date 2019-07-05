@@ -1,11 +1,14 @@
 package app.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.math.BigDecimal;
 
 /**
  * @author pickjob@126.com
  * @time 2019-05-05
  **/
+@TableName("customers")
 public class Customer {
     private Integer customerNumber;
     private String customerName;

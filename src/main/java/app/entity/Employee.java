@@ -1,9 +1,12 @@
 package app.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * @author pickjob@126.com
  * @time 2019-05-05
  **/
+@TableName("employees")
 public class Employee {
     private Integer employeeNumber;
     private String lastName;

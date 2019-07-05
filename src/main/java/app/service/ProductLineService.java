@@ -16,8 +16,6 @@ public class ProductLineService {
     @Autowired private ProductLineDao productlineDao;
 
     public void listAllProductlines() {
-        productlineDao.listAllProductlines().forEach(p -> {
-            logger.info("ProductLine: {}", p);
-        });
+        productlineDao.selectList(null);
     }
 }

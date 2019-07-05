@@ -16,8 +16,6 @@ public class CustomerService {
     @Autowired private CustomerDao customerDao;
 
     public void listAllCustomers() {
-        customerDao.listAllCustomers().forEach((c) -> {
-            logger.info(c);
-        });
+        customerDao.selectList(null);
     }
 }

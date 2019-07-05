@@ -16,8 +16,6 @@ public class OrderService {
     @Autowired private OrderDao orderDao;
 
     public void  listAllOrders() {
-        orderDao.listAllOrders().forEach(o -> {
-            logger.info("Order: {}", o);
-        });
+        orderDao.selectList(null);
     }
 }

@@ -16,8 +16,6 @@ public class ProductService {
     @Autowired private ProductDao productDao;
 
     public void listAllProducts() {
-        productDao.listAllProducts().forEach(p -> {
-            logger.info("Product: {}", p);
-        });
+        productDao.selectList(null);
     }
 }

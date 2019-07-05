@@ -20,9 +20,7 @@ public class PaymentService {
     @Autowired private PaymentDao paymentDao;
 
     public void listAllPayments() {
-        paymentDao.listAllPayments().forEach(p -> {
-            logger.info("Payment: {}", p);
-        });
+        paymentDao.selectList(null);
     }
 
     public void showRoutingDataSource() {
@@ -33,12 +31,12 @@ public class PaymentService {
 
     @DataSourceKey(DataSourceKeyEnum.SCHEMA_A)
     public void listAllPaymentsA() {
-        logger.info("listAllPaymentsA: {}", paymentDao.listAllPayments());
+        logger.info("listAllPaymentsA: {}", paymentDao.selectList(null));
     }
 
     @Transactional
     @DataSourceKey(DataSourceKeyEnum.SCHEMA_B)
     public void listAllPaymentsB() {
-        logger.info("listAllPaymentsB: {}", paymentDao.listAllPayments());
+        logger.info("listAllPaymentsB: {}", paymentDao.selectList(null));
     }
 }
