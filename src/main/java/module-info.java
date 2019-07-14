@@ -6,6 +6,7 @@ module pickjob.spring.starter {
     requires spring.beans;
     requires spring.aop;
     requires spring.web;
+    requires spring.webmvc;
     requires spring.jdbc;
     requires spring.tx;
 
@@ -21,6 +22,9 @@ module pickjob.spring.starter {
     requires mybatis.plus.core;
     requires mybatis.plus.annotation;
     requires mybatis.plus.extension;
+    requires java.validation;
+
+    requires static lombok;
 
     opens app to spring.core
             , spring.beans
@@ -30,7 +34,7 @@ module pickjob.spring.starter {
     opens app.aop to spring.beans
             , spring.aop
             ;
-    opens app.common.keys to spring.core
+    opens app.aop.datasource.keys to spring.core
             ;
     opens app.config to spring.core
             , spring.beans

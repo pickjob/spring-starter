@@ -1,8 +1,8 @@
 package app.aop;
 
-import app.common.annotation.DataSourceKey;
-import app.common.keys.DataSourceKeyEnum;
-import app.util.DataSourceHolder;
+import app.aop.datasource.annotation.DataSourceKey;
+import app.aop.datasource.keys.DataSourceKeyEnum;
+import app.aop.datasource.holder.DataSourceHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
  * @author pickjob@126.com
  * @time 2019-02-22
  */
-@Component
 @Aspect
+@Component
 public class DataSourceAspect implements Ordered {
     private static Logger logger = LogManager.getLogger(DataSourceAspect.class);
 

@@ -1,17 +1,15 @@
 plugins {
     id 'java'
     id 'idea'
-    id 'application'
     id 'org.gradle.java.experimental-jigsaw' version '0.1.1'
-    id 'org.springframework.boot' version '2.1.2.RELEASE'
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
     id 'io.spring.dependency-management' version '1.0.6.RELEASE'
 }
-apply plugin: 'io.spring.dependency-management'
 
 group 'pickjob'
 version '0.0.1'
-mainClassName = 'app.Application'
 javaModule.name = 'pickjob.spring.starter'
+ext.mainClassName = 'app.Application'
 
 configurations {
     implementation {
@@ -20,17 +18,20 @@ configurations {
     }
 }
 
-
 dependencies {
+    implementation 'org.springframework:spring-context-support'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 
     implementation 'mysql:mysql-connector-java:8.0.15'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2'
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.1.1'
 
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }
 
 repositories {
@@ -42,13 +43,13 @@ repositories {
  *  Plugin: java配置
  */
 compileJava {
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 12
+    targetCompatibility = 12
     options.encoding = 'UTF-8'
 }
 compileTestJava {
-    sourceCompatibility = 11
-    targetCompatibility = 11
+    sourceCompatibility = 12
+    targetCompatibility = 12
     options.encoding = 'UTF-8'
 }
 processResources {
@@ -56,12 +57,6 @@ processResources {
 }
 processTestResources {
     destinationDir = sourceSets.test.java.outputDir
-}
-/*
- * Plugin: Appliction
- */
-run {
-    main = "${mainClassName}"
 }
 /*
  *  Plugin: idea 配置

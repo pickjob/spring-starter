@@ -9,10 +9,11 @@ import org.springframework.context.annotation.Configuration;
  * @author pickjob@126.com
  * @time 2019-02-21
  */
-@Configuration
 @MapperScan(basePackages = "app.dao")
+@Configuration
 public class MybatisConfiguration {
 
+    // MybatisPlus 分页插件
     @Bean
     public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();

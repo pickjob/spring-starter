@@ -1,6 +1,7 @@
 package app.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.math.BigDecimal;
 
@@ -8,6 +9,7 @@ import java.math.BigDecimal;
  * @author pickjob@126.com
  * @time 2019-05-06
  **/
+@Data
 @TableName("orderdetails")
 public class OrderDetail {
     private Integer orderNumber;
@@ -15,55 +17,4 @@ public class OrderDetail {
     private Integer quantityOrdered;
     private BigDecimal priceEach;
     private Short orderLineNumber;
-
-    public Integer getOrderNumber() {
-        return orderNumber;
-    }
-
-    public void setOrderNumber(Integer orderNumber) {
-        this.orderNumber = orderNumber;
-    }
-
-    public String getProductCode() {
-        return productCode;
-    }
-
-    public void setProductCode(String productCode) {
-        this.productCode = productCode;
-    }
-
-    public Integer getQuantityOrdered() {
-        return quantityOrdered;
-    }
-
-    public void setQuantityOrdered(Integer quantityOrdered) {
-        this.quantityOrdered = quantityOrdered;
-    }
-
-    public BigDecimal getPriceEach() {
-        return priceEach;
-    }
-
-    public void setPriceEach(BigDecimal priceEach) {
-        this.priceEach = priceEach;
-    }
-
-    public Short getOrderLineNumber() {
-        return orderLineNumber;
-    }
-
-    public void setOrderLineNumber(Short orderLineNumber) {
-        this.orderLineNumber = orderLineNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderDetail{" +
-                "orderNumber=" + orderNumber +
-                ", productCode='" + productCode + '\'' +
-                ", quantityOrdered=" + quantityOrdered +
-                ", priceEach=" + priceEach +
-                ", orderLineNumber=" + orderLineNumber +
-                '}';
-    }
 }

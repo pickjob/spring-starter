@@ -1,7 +1,7 @@
 package app.config;
 
-import app.common.keys.DataSourceKeyEnum;
-import app.util.DataSourceHolder;
+import app.aop.datasource.keys.DataSourceKeyEnum;
+import app.aop.datasource.holder.DataSourceHolder;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +18,8 @@ import java.util.Map;
  * @author pickjob@126.com
  * @time 2019-02-22
  */
-@Configuration
 @EnableTransactionManagement
+@Configuration
 public class DataSourceConfiguration {
 
     @Bean

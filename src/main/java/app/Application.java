@@ -1,5 +1,6 @@
 package app;
 
+import app.entity.Customer;
 import app.service.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
