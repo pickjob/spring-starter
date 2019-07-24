@@ -9,7 +9,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
 public class DateConverter implements Converter<String, Date> {
     private static Logger logger = LogManager.getLogger(DateConverter.class);
     private ThreadLocal<DateFormat> formatter = new ThreadLocal<>() {

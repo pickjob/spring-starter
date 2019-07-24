@@ -14,8 +14,8 @@ import java.util.UUID;
  * @author pickjob@126.com
  * @time 2018-12-26
  */
-@Aspect
 @Component
+@Aspect
 public class LoggingAspect implements Ordered {
     private static Logger logger = LogManager.getLogger(LoggingAspect.class);
 

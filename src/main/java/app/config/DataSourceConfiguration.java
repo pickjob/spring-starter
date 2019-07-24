@@ -18,8 +18,8 @@ import java.util.Map;
  * @author pickjob@126.com
  * @time 2019-02-22
  */
-@EnableTransactionManagement
 @Configuration
+@EnableTransactionManagement
 public class DataSourceConfiguration {
 
     @Bean

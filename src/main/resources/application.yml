@@ -1,3 +1,22 @@
+#spring:
+#  application:
+#    admin:
+#      enabled: true
+# /actuator开放 beans caches conditions configprops env flyway health httptrace metrics mappings scheduledtasks sessions shutdown threaddump
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  server:
+    address: 127.0.0.1
+spring:
+  servlet:
+    multipart:
+      max-file-size: -1
 datasource:
   schema-a:
     jdbc-url: jdbc:mysql://localhost/sample?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true

@@ -13,9 +13,12 @@ import org.springframework.stereotype.Service;
 public class ScheduledService {
     private static final Logger logger = LogManager.getLogger(ScheduledService.class);
 
-    @Scheduled(fixedRate = 10 * 60 * 1000)
+    @Scheduled(fixedRate = 60 * 1000)
     public void scheduledTask() {
-        logger.info("schedule logging ...");
-//        throw new RuntimeException("exception happened");
+        logger.info("default scheduled task");
+    }
+
+    public void scheduledTask(String name) {
+        logger.info("{} scheduled task", name);
     }
 }

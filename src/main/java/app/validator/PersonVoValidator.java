@@ -1,20 +1,21 @@
 package app.validator;
 
-import app.model.Person;
+import app.vo.PersonVo;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
-public class PersonValidator implements Validator {
+public class PersonVoValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
-        return Person.class.equals(clazz);
+//        return PersonVo.class.equals(clazz);
+        return true;
     }
 
     @Override
     public void validate(Object target, Errors errors) {
-        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
+//        ValidationUtils.rejectIfEmpty(errors, "name", "name.empty");
     }
 }

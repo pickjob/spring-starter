@@ -16,8 +16,8 @@ import org.springframework.stereotype.Component;
  * @author pickjob@126.com
  * @time 2019-02-22
  */
-@Aspect
 @Component
+@Aspect
 public class DataSourceAspect implements Ordered {
     private static Logger logger = LogManager.getLogger(DataSourceAspect.class);
 

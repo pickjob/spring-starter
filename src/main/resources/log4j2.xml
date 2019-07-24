@@ -20,9 +20,9 @@
             <appender-ref ref="console" />
             <appender-ref ref="file" />
         </root>
-        <logger name="app.dao" level="debug" additivity="false" >
+        <asyncLogger name="app.dao" level="debug" additivity="false" >
             <appender-ref ref="console" />
             <appender-ref ref="file" />
-        </logger>
+        </asyncLogger>
     </loggers>
 </configuration>

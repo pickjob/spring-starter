@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Configuration;
  * @author pickjob@126.com
  * @time 2019-02-21
  */
-@MapperScan(basePackages = "app.dao")
 @Configuration
+@MapperScan(basePackages = "app.dao")
 public class MybatisConfiguration {
 
     // MybatisPlus 分页插件

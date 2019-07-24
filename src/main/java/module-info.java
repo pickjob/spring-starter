@@ -1,17 +1,24 @@
 module pickjob.spring.starter {
     requires java.sql;
 
+    requires tomcat.embed.core;
+
     requires spring.core;
     requires spring.context;
+    requires spring.context.support;
     requires spring.beans;
     requires spring.aop;
     requires spring.web;
+    requires spring.websocket;
     requires spring.webmvc;
     requires spring.jdbc;
     requires spring.tx;
+    requires quartz;
 
     requires spring.boot;
     requires spring.boot.autoconfigure;
+    requires spring.boot.actuator;
+    requires spring.boot.starter.quartz;
 
     requires org.apache.logging.log4j;
     requires org.aspectj.weaver;
