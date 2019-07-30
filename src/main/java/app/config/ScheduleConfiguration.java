@@ -2,8 +2,6 @@ package app.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.SchedulingConfigurer;
-import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 
 /**
  * @author pickjob@126.com
@@ -11,7 +9,7 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
  */
 @Configuration
 @EnableScheduling
-public class ScheduledConfiguration
+public class ScheduleConfiguration
 //        implements SchedulingConfigurer
 {
 

@@ -63,7 +63,7 @@ module pickjob.spring.starter {
             , spring.aop
             , spring.context
             ;
-    opens app.service.scheduled to spring.beans
+    opens app.service.schedule to spring.beans
             , spring.context
             ;
 

@@ -19,7 +19,7 @@ spring:
       max-file-size: -1
 datasource:
   schema-a:
-    jdbc-url: jdbc:mysql://localhost/sample?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    jdbc-url: jdbc:mysql://mysql/sample?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
     username: china
     password: chinese
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -36,7 +36,7 @@ datasource:
       elideSetAutoCommits: true
       maintainTimeStats: false
   schema-b:
-    jdbc-url: jdbc:mysql://localhost:3000/sample?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    jdbc-url: jdbc:mysql://mysql:3000/sample?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
     username: china
     password: chinese
     driver-class-name: com.mysql.cj.jdbc.Driver

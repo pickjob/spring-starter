@@ -1,6 +1,5 @@
 package app;
 
-import app.entity.Customer;
 import app.service.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,14 +15,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 )
 public class Application implements ApplicationRunner {
     private static Logger logger = LogManager.getLogger(Application.class);
-    @Autowired private PaymentService paymentService;
-    @Autowired private OfficeService officeService;
-    @Autowired private EmployeeService employeeService;
-    @Autowired private OrderService orderService;
-    @Autowired private ProductLineService productlineService;
-    @Autowired private ProductService productService;
-    @Autowired private OrderDetailService orderDetailService;
-    @Autowired private CustomerService customerService;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -31,6 +22,5 @@ public class Application implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        customerService.listAllCustomers();
     }
 }
