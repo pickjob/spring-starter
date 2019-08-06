@@ -13,7 +13,6 @@ public class MyFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        logger.info("aaa");
         chain.doFilter(request, response);
     }
 }

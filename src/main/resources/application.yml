@@ -52,7 +52,13 @@ datasource:
       cacheServerConfiguration: true
       elideSetAutoCommits: true
       maintainTimeStats: false
-mybatis:
+#mybatis:
+#  configuration:
+#    map-underscore-to-camel-case: true
+#  type-handlers-package: app.type.handler
+#  mapper-locations: app/dao/ScheduleJobMapper.xml
+mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
-  mapper-locations:
+  type-handlers-package: app.type.handler
+  mapper-locations: app/dao/ScheduleJobMapper.xml

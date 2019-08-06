@@ -2,13 +2,12 @@
 <!DOCTYPE mapper PUBLIC
         "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="app.entity.ScheduleJob">
-    <resultMap id="BaseResultMap" type="app.entity.ScheduleJob">
-        <!-- @mbg.generated: generated automatically, do not modify! -->
+<mapper namespace="app.dao.ScheduleJobMapper">
+    <resultMap id="ScheduleJobMap" type="app.entity.ScheduleJob">
         <id column="job_id" jdbcType="BIGINT" property="jobId" />
-        <result column="bean_name" jdbcType="VARCHAR" property="beanName" />
-        <result column="bean_method" jdbcType="VARCHAR" property="beanMethod" />
-        <result column="method_params" jdbcType="VARCHAR" property="methodParams" />
+        <result column="target_bean" jdbcType="VARCHAR" property="targetBean" />
+        <result column="target_method" jdbcType="VARCHAR" property="targetMethod" />
+        <result column="target_argument" jdbcType="VARCHAR" property="targetArgument" />
         <result column="cron_expression" jdbcType="VARCHAR" property="cronExpression" />
         <result column="type" jdbcType="TINYINT" property="type" />
         <result column="status" jdbcType="TINYINT" property="status" />

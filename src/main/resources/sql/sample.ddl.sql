@@ -1,9 +1,9 @@
 -- 定时任务
 CREATE TABLE schedule_job (
   job_id bigint PRIMARY KEY AUTO_INCREMENT COMMENT '任务id',
-  bean_name varchar(200) NOT NULL COMMENT 'spring bean名称',
-  bean_method varchar(200) NOT NULL COMMENT 'spring bean方法',
-  method_params varchar(2000) DEFAULT NULL COMMENT '方法参数',
+  target_bean varchar(200) NOT NULL COMMENT 'spring bean名称',
+  target_method varchar(200) NOT NULL COMMENT 'spring bean方法',
+  target_argument varchar(2000) DEFAULT NULL COMMENT '方法参数',
   cron_expression varchar(100) DEFAULT NULL COMMENT 'cron表达式',
   type tinyint NOT NULL COMMENT '定时任务类型: 1-spring 2-quartz',
   status tinyint NOT NULL COMMENT '任务状态: 0-正常 1-暂停 2-删除',
