@@ -16,6 +16,8 @@ module pickjob.spring.starter {
     requires quartz;
 
     requires spring.boot;
+    requires spring.data.commons;
+    requires spring.data.redis;
     requires spring.boot.autoconfigure;
     requires spring.boot.actuator;
     requires spring.boot.starter.quartz;

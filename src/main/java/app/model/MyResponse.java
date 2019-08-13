@@ -2,10 +2,11 @@ package app.model;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 @Data
-public class MyResponse {
+public class MyResponse implements Serializable {
     private String code;
     private String description;
     private Object data;
