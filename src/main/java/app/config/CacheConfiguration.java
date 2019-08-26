@@ -1,5 +1,6 @@
 package app.config;
 
+import org.springframework.cache.annotation.CachingConfigurer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +16,8 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
  */
 @Configuration
 @EnableCaching
-public class CacheConfiguration {
+public class CacheConfiguration
+//    implements CachingConfigurer
+{
 
 }

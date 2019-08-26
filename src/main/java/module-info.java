@@ -14,10 +14,12 @@ module pickjob.spring.starter {
     requires spring.jdbc;
     requires spring.tx;
     requires quartz;
+    requires mongo.java.driver;
 
     requires spring.boot;
     requires spring.data.commons;
     requires spring.data.redis;
+    requires spring.data.mongodb;
     requires spring.boot.autoconfigure;
     requires spring.boot.actuator;
     requires spring.boot.starter.quartz;

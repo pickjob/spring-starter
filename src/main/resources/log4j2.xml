@@ -20,6 +20,10 @@
             <appender-ref ref="console" />
             <appender-ref ref="file" />
         </root>
+        <asyncLogger name="org.springframework.data.mongodb" level="debug" additivity="false">
+            <appender-ref ref="console" />
+            <appender-ref ref="file" />
+        </asyncLogger>
         <asyncLogger name="app.dao" level="debug" additivity="false" >
             <appender-ref ref="console" />
             <appender-ref ref="file" />

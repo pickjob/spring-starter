@@ -28,6 +28,10 @@ spring:
         max-wait: -1ms
         min-idle: 0
         shutdown-timeout: 100ms
+  data:
+    mongodb:
+      uri: mongodb://china:chinese@mongo:27017
+      database: sample
   cache:
     redis:
       time-to-live: 3600
