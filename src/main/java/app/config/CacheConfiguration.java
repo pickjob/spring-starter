@@ -1,23 +1,21 @@
 package app.config;
 
-import org.springframework.cache.annotation.CachingConfigurer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.cache.RedisCacheConfiguration;
-import org.springframework.data.redis.cache.RedisCacheManager;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializationContext;
 
 /**
  * @author pickjob@126.com
  * @time 2019-08-13
  */
+@EnableCaching(
+        proxyTargetClass = true
+)
 @Configuration
-@EnableCaching
 public class CacheConfiguration
-//    implements CachingConfigurer
+//        implements CachingConfigurer
 {
+    private static final Logger logger = LogManager.getLogger(CacheConfiguration.class);
 
 }

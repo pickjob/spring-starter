@@ -1,27 +1,30 @@
 package app.config;
 
-import app.converter.DateConverter;
+import app.common.converter.DateConverter;
+import app.common.converter.ScheduleTypeParser;
 import app.filter.MyFilter;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.DispatcherType;
 import java.util.Arrays;
 import java.util.EnumSet;
 
+//@EnableWebMvc
 @Configuration
-@EnableWebMvc
 public class MVCConfiguration implements WebMvcConfigurer {
+    private static final Logger logger = LogManager.getLogger(MVCConfiguration.class);
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        DateConverter dateConverter = new DateConverter();
-        registry.addConverter(dateConverter);
+        registry.addConverter(new DateConverter());
+        registry.addParser(new ScheduleTypeParser());
     }
 
     @Override

@@ -1,7 +1,8 @@
 package app.type.handler;
 
-import app.common.ScheduleTypeEnum;
+import app.common.enums.ScheduleTypeEnum;
 import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
 import org.apache.ibatis.type.MappedTypes;
 import org.apache.ibatis.type.TypeHandler;
 
@@ -14,7 +15,8 @@ import java.sql.SQLException;
  * @author pickjob@126.com
  * @time 2019-08-06
  */
-@MappedTypes({StatusTypeHandler.class})
+@MappedJdbcTypes({JdbcType.TINYINT})
+@MappedTypes({ScheduleTypeEnum.class})
 public class ScheduleTypeTypeHandler implements TypeHandler<ScheduleTypeEnum> {
 
     @Override

@@ -1,13 +1,36 @@
 package app.dao.base;
 
-import app.entity.ScheduleJob;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.apache.ibatis.annotations.Mapper;
+import app.model.entity.ScheduleJob;
 
-/**
- * @author pickjob@126.com
- * @time 2019-05-29
- */
-@Mapper
-public interface ScheduleJobMapper extends BaseMapper<ScheduleJob> {
+public interface ScheduleJobMapper {
+
+    /**
+     * @mbg.generated generated automatically, do not modify!
+     */
+    int deleteByPrimaryKey(Long id);
+
+    /**
+     * @mbg.generated generated automatically, do not modify!
+     */
+    int insert(ScheduleJob record);
+
+    /**
+     * @mbg.generated generated automatically, do not modify!
+     */
+    int insertSelective(ScheduleJob record);
+
+    /**
+     * @mbg.generated generated automatically, do not modify!
+     */
+    ScheduleJob selectByPrimaryKey(Long id);
+
+    /**
+     * @mbg.generated generated automatically, do not modify!
+     */
+    int updateByPrimaryKeySelective(ScheduleJob record);
+
+    /**
+     * @mbg.generated generated automatically, do not modify!
+     */
+    int updateByPrimaryKey(ScheduleJob record);
 }

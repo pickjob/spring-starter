@@ -9,7 +9,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.lang.reflect.Method;
 
-@EnableAsync
+@EnableAsync(
+        proxyTargetClass = true
+)
 @Configuration
 public class AsyncConfiguration implements AsyncConfigurer {
     private static final Logger logger = LogManager.getLogger(AsyncConfiguration.class);
@@ -19,7 +21,7 @@ public class AsyncConfiguration implements AsyncConfigurer {
         return new AsyncUncaughtExceptionHandler() {
             @Override
             public void handleUncaughtException(Throwable ex, Method method, Object... params) {
-                logger.error("{} counter {}, params: {}", method.getDeclaredAnnotations(), ex.getLocalizedMessage(), params);
+                logger.error("{} counter {}, params: {}", method.getDeclaredAnnotations(), ex.getMessage(), params);
                 logger.error(ex.getMessage(), ex);
             }
         };

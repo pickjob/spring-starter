@@ -1,8 +1,10 @@
 package app.config;
 
-import app.aop.datasource.keys.DataSourceKeyEnum;
-import app.aop.datasource.holder.DataSourceHolder;
+import app.common.annotation.DataSourceKey;
+import app.util.DataSourceHolder;
 import com.zaxxer.hikari.HikariDataSource;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,40 +20,52 @@ import java.util.Map;
  * @author pickjob@126.com
  * @time 2019-02-22
  */
+@EnableTransactionManagement(
+        proxyTargetClass = true
+)
 @Configuration
-@EnableTransactionManagement
 public class DataSourceConfiguration {
+    private static final Logger logger = LogManager.getLogger(DataSourceConfiguration.class);
 
+    @ConfigurationProperties(prefix = "datasource.schema-primary")
     @Bean
-    @ConfigurationProperties(prefix = "datasource.schema-a")
-    public HikariDataSource dataSourceA() {
+    public HikariDataSource datasourcePrimary() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setPoolName("SCHEMA_A");
+        dataSource.setPoolName("SCHEMA_PRIMARY");
         return dataSource;
     }
 
+    @ConfigurationProperties(prefix = "datasource.schema-secondary")
     @Bean
-    @ConfigurationProperties(prefix = "datasource.schema-b")
-    public HikariDataSource dataSourceB() {
+    public HikariDataSource datasourceSecondary() {
         HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setPoolName("SCHEMA_B");
+        dataSource.setPoolName("SCHEMA_SECONDARY");
         return dataSource;
     }
 
-    @Bean
     @Primary
+    @Bean
     public DataSource dataSource() {
-        AbstractRoutingDataSource dataSource = new AbstractRoutingDataSource() {
+        AbstractRoutingDataSource datasource = new AbstractRoutingDataSource() {
             @Override
             protected Object determineCurrentLookupKey() {
                 return DataSourceHolder.getDataSourceKey();
             }
         };
         Map<Object, Object> map = new HashMap<>();
-        map.put(DataSourceKeyEnum.SCHEMA_A, dataSourceA());
-        map.put(DataSourceKeyEnum.SCHEMA_B, dataSourceB());
-        dataSource.setTargetDataSources(map);
-        dataSource.setDefaultTargetDataSource(dataSourceA());
+        map.put(DataSourceKey.DataSourceKeyEnum.PRIMARY, datasourcePrimary());
+        map.put(DataSourceKey.DataSourceKeyEnum.SECONDARY, datasourceSecondary());
+        datasource.setTargetDataSources(map);
+        datasource.setDefaultTargetDataSource(datasourcePrimary());
+        return datasource;
+    }
+
+    // Quartz 专用数据源
+    @ConfigurationProperties(prefix = "datasource.schema-quartz")
+    @Bean
+    public HikariDataSource datasourceQuartz() {
+        HikariDataSource dataSource = new HikariDataSource();
+        dataSource.setPoolName("SCHEMA_QUARTZ");
         return dataSource;
     }
 }

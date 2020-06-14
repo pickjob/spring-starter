@@ -1,19 +1,18 @@
 package app.service.schedule;
 
-import app.common.ScheduleTypeEnum;
-import app.common.StatusEnum;
+import app.common.enums.ScheduleTypeEnum;
+import app.common.enums.ScheduleStatusEnum;
 import app.dao.ScheduleJobDao;
-import app.entity.ScheduleJob;
-import app.model.MyQuartzJobBean;
-import app.model.vo.ScheduleJobVo;
+import app.model.entity.ScheduleJob;
+import app.model.schedule.MyQuartzJobBean;
+import app.model.dto.ScheduleJobDto;
+import app.util.ApplicationContextHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.config.CronTask;
-import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,29 +30,28 @@ import java.util.concurrent.ScheduledFuture;
 public class ScheduleService {
     private static final Logger logger = LogManager.getLogger(ScheduleService.class);
     private Map<Long, ScheduledFuture> scheduleJobMap = new ConcurrentHashMap<>();
-    @Autowired private ApplicationContext applicationContext;
     @Autowired private TaskScheduler taskScheduler;
-    @Autowired private ScheduleJobDao scheduleJobDao;
     @Autowired private Scheduler scheduler;
+    @Autowired private ScheduleJobDao scheduleJobDao;
 
-    @Transactional
-    public void addScheduleJob(ScheduleJobVo scheduleJobVo, ScheduleTypeEnum scheduleTypeEnum) {
+    @Transactional(rollbackFor = Throwable.class)
+    public void addScheduleJob(ScheduleJobDto scheduleJobVo) {
         ScheduleJob scheduleJob = new ScheduleJob();
         scheduleJob.setTargetBean(scheduleJobVo.getTargetName());
         scheduleJob.setTargetMethod(scheduleJobVo.getTargetMethod());
         scheduleJob.setTargetArgument(scheduleJobVo.getTargetArguement());
         scheduleJob.setCronExpression(scheduleJobVo.getExpression());
-        scheduleJob.setStatus(StatusEnum.NORMAL);
-        scheduleJob.setType((byte) 1);
+        scheduleJob.setScheduleStatus(ScheduleStatusEnum.NORMAL);
+        scheduleJob.setScheduleType(scheduleJobVo.getScheduleTypeEnum());
         scheduleJob.setCreateTime(new Date());
         scheduleJobDao.insert(scheduleJob);
-        Long scheduleJobId = scheduleJob.getJobId();
-        if (scheduleTypeEnum == ScheduleTypeEnum.SPRING) {
+        Long scheduleJobId = scheduleJob.getId();
+        if (scheduleJobVo.getScheduleTypeEnum() == ScheduleTypeEnum.SPRING) {
             CronTask task = new CronTask(new Runnable() {
                 @Override
                 public void run() {
                     try {
-                        Object targetObject = applicationContext.getBean(scheduleJobVo.getTargetName());
+                        Object targetObject = ApplicationContextHolder.getApplicationContext().getBean(scheduleJobVo.getTargetName());
                         String targetMethod = scheduleJobVo.getTargetMethod();
                         String targetArgument = scheduleJobVo.getTargetArguement();
                         Method method = targetObject.getClass().getMethod(targetMethod, String.class);
@@ -66,7 +64,7 @@ public class ScheduleService {
             }, scheduleJobVo.getExpression());
             ScheduledFuture scheduledFuture = taskScheduler.schedule(task.getRunnable(), task.getTrigger());
             scheduleJobMap.put(scheduleJobId, scheduledFuture);
-        } else if (scheduleTypeEnum == ScheduleTypeEnum.QUARTZ) {
+        } else if (scheduleJobVo.getScheduleTypeEnum() == ScheduleTypeEnum.QUARTZ) {
             JobDetail jobDetail = JobBuilder
                                     .newJob(MyQuartzJobBean.class)
                                     .withIdentity(scheduleJobId + "")
@@ -91,16 +89,16 @@ public class ScheduleService {
         }
     }
 
-    @Transactional
-    public void deleteScheduleJob(Long scheduleJobId, ScheduleTypeEnum scheduleTypeEnum) {
-        ScheduleJob job = scheduleJobDao.selectById(scheduleJobId);
+    @Transactional(rollbackFor = Throwable.class)
+    public void deleteScheduleJob(Long scheduleJobId) {
+        ScheduleJob job = scheduleJobDao.selectByPrimaryKey(scheduleJobId);
         if (job != null) return;
-        job.setStatus(StatusEnum.DELETED);
-        if (scheduleTypeEnum == ScheduleTypeEnum.SPRING) {
+        job.setScheduleStatus(ScheduleStatusEnum.DELETED);
+        if (job.getScheduleType() == ScheduleTypeEnum.SPRING) {
             ScheduledFuture future = scheduleJobMap.get(scheduleJobId);
             future.cancel(true);
             scheduleJobMap.remove(scheduleJobId);
-        } else if (scheduleTypeEnum == ScheduleTypeEnum.QUARTZ) {
+        } else if (job.getScheduleType() == ScheduleTypeEnum.QUARTZ) {
             try {
                 scheduler.unscheduleJob(new TriggerKey(scheduleJobId + ""));
             } catch (SchedulerException e) {
