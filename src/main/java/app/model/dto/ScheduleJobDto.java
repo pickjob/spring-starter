@@ -1,6 +1,6 @@
 package app.model.dto;
 
-import app.common.enums.ScheduleTypeEnum;
+import app.enums.ScheduleTypeEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

@@ -22,6 +22,6 @@ public class ValidationController {
     @ApiImplicitParam(name = "number", value = "待校验数", defaultValue = "34", paramType = "query", required = true)
     @GetMapping
     private MyResponse isOdd(@Validated ValidationDto dto) {
-        return MyResponse.success();
+        return MyResponse.success("通过校验");
     }
 }

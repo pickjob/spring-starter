@@ -1,6 +1,6 @@
 package app.config;
 
-import app.common.annotation.DataSourceKey;
+import app.aspect.datasource.DataSourceKey;
 import app.util.DataSourceHolder;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +18,7 @@ import java.util.Map;
 
 /**
  * @author pickjob@126.com
- * @time 2019-02-22
+ * @date 2019-02-22
  */
 @EnableTransactionManagement(
         proxyTargetClass = true

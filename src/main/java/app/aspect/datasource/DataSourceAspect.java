@@ -1,6 +1,5 @@
-package app.aspect;
+package app.aspect.datasource;
 
-import app.common.annotation.DataSourceKey;
 import app.util.DataSourceHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -10,10 +9,9 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
-
 /**
  * @author pickjob@126.com
- * @time 2019-02-22
+ * @date 2019-02-22
  */
 @Aspect
 @Component

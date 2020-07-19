@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-13
+ * @date 2019-08-13
  */
 @Api( tags = "缓存示例")
 @RequestMapping("/v1/cache")

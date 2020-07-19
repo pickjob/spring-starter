@@ -9,6 +9,10 @@ import org.springframework.scheduling.annotation.EnableAsync;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author pickjob@126.com
+ * @date 2018-12-26
+ */
 @EnableAsync(
         proxyTargetClass = true
 )

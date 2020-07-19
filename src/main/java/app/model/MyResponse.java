@@ -1,5 +1,7 @@
 package app.model;
 
+import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthenticatedException;
 import org.springframework.validation.FieldError;
 
 import java.io.Serializable;
@@ -22,8 +24,16 @@ public class MyResponse implements Serializable {
         return response(400, String.format("field: %s, rejectValue: %s, message: %s", fieldError.getField(), fieldError.getRejectedValue(), fieldError.getDefaultMessage()), new HashMap<>());
     }
 
-    public static MyResponse error() {
-        return response(500, "server error", new HashMap<>());
+    public static MyResponse unauthened(UnauthenticatedException e) {
+        return response(401, e.getMessage(), new HashMap<>());
+    }
+
+    public static MyResponse unauthorized(AuthorizationException e) {
+        return response(403, e.getMessage(), new HashMap<>());
+    }
+
+    public static MyResponse error(String msg) {
+        return response(500, msg, new HashMap<>());
     }
 
     private static MyResponse response(int code, String description, Object data) {

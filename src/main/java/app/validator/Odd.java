@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-03
+ * @date 2019-08-03
  */
 @Constraint(validatedBy = OddConstraintValidator.class)
 @Documented

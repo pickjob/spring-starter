@@ -1,6 +1,6 @@
-package app.common.converter;
+package app.type.converter;
 
-import app.common.enums.ScheduleTypeEnum;
+import app.enums.ScheduleTypeEnum;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -16,11 +16,11 @@ import java.io.IOException;
 
 /**
  * @author pickjob@126.com
- * @time 2020-05-19
+ * @date 2020-05-19
  */
 @JsonComponent
-public class ScheduleTypeSerializer {
-    private static final Logger logger = LogManager.getLogger(ScheduleTypeSerializer.class);
+public class ScheduleTypeJsonFormatter {
+    private static final Logger logger = LogManager.getLogger(ScheduleTypeJsonFormatter.class);
 
     public static class ScheduleJsonSerializer extends JsonSerializer<ScheduleTypeEnum> {
         @Override

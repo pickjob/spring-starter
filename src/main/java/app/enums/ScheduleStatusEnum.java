@@ -1,8 +1,8 @@
-package app.common.enums;
+package app.enums;
 
 /**
  * @author pickjob@126.com
- * @time 2019-07-30
+ * @date 2019-07-30
  */
 public enum ScheduleStatusEnum {
     NORMAL(0),

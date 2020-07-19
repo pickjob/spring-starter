@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-01
+ * @date 2019-08-01
  */
 public class MyQuartzJobBean extends QuartzJobBean {
     private static final Logger logger = LogManager.getLogger(MyQuartzJobBean.class);

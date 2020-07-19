@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-03
+ * @date 2019-08-03
  */
 @Component
 public class OddConstraintValidator implements ConstraintValidator<Odd, Integer> {

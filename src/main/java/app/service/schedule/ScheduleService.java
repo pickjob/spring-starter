@@ -1,8 +1,8 @@
 package app.service.schedule;
 
-import app.common.enums.ScheduleTypeEnum;
-import app.common.enums.ScheduleStatusEnum;
 import app.dao.ScheduleJobDao;
+import app.enums.ScheduleStatusEnum;
+import app.enums.ScheduleTypeEnum;
 import app.model.entity.ScheduleJob;
 import app.model.schedule.MyQuartzJobBean;
 import app.model.dto.ScheduleJobDto;
@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledFuture;
 
 /**
  * @author pickjob@126.com
- * @time 2019-07-30
+ * @date 2019-07-30
  */
 @Service
 public class ScheduleService {

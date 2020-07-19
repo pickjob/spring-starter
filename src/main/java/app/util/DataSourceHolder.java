@@ -1,11 +1,11 @@
 package app.util;
 
 
-import app.common.annotation.DataSourceKey;
+import app.aspect.datasource.DataSourceKey;
 
 /**
  * @author pickjob@126.com
- * @time 2019-02-22
+ * @date 2019-02-22
  */
 public class DataSourceHolder {
     private static ThreadLocal<DataSourceKey.DataSourceKeyEnum> holder = new ThreadLocal<>() {

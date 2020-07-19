@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author pickjob@126.com
- * @time 2019-02-21
+ * @date 2019-02-21
  */
 @MapperScan(basePackages = "app.dao")
 @Configuration

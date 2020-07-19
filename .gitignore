@@ -3,3 +3,5 @@
 logs/
 build/
 *.iml
+*.ipr
+*.iws

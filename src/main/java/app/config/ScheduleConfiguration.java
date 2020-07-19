@@ -7,7 +7,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author pickjob@126.com
- * @time 2019-01-11
+ * @date 2019-01-11
  */
 @EnableScheduling
 @Configuration
@@ -16,7 +16,4 @@ public class ScheduleConfiguration
 {
     private static final Logger logger = LogManager.getLogger(ScheduleConfiguration.class);
 
-//    @Override
-//    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-//    }
 }

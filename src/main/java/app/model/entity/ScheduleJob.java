@@ -1,7 +1,7 @@
 package app.model.entity;
 
-import app.common.enums.ScheduleTypeEnum;
-import app.common.enums.ScheduleStatusEnum;
+import app.enums.ScheduleStatusEnum;
+import app.enums.ScheduleTypeEnum;
 
 import java.util.Date;
 

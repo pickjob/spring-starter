@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @author pickjob@126.com
- * @time 2019-05-29
+ * @date 2019-05-29
  */
 @Mapper
 public interface ScheduleJobDao extends ScheduleJobMapper {

@@ -1,14 +1,17 @@
-## /actuator 开放 beans caches conditions configprops env flyway health httptrace metrics mappings scheduledtasks sessions shutdown threaddump
-#management:
-#    endpoint:
-#        health:
-#            show-details: always
-#    endpoints:
-#        web:
-#            exposure:
-#                include: '*'
-#    server:
-#        address: 127.0.0.1
+# /actuator/ + beans caches conditions configprops env health metrics mappings sessions shutdown threaddump
+management:
+    endpoint:
+        health:
+            show-details: always
+    endpoints:
+        enabled-by-default: true
+        web:
+            exposure:
+                include: '*'
+    server:
+        address: 127.0.0.1
+server:
+    shutdown: graceful
 spring:
     application:
         admin:
@@ -32,6 +35,8 @@ spring:
         cache-names: demoCache
         caffeine:
             spec: maximumSize=500,expireAfterAccess=600s
+    lifecycle:
+        timeout-per-shutdown-phase: 20s
 datasource:
     schema-primary:
         jdbc-url: jdbc:mysql://mysql:3306/primary?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
@@ -87,5 +92,8 @@ datasource:
 mybatis:
     configuration:
         map-underscore-to-camel-case: true
-    type-handlers-package: app.type.handler
+    type-handlers-package: app.type.typehandler
     mapper-locations: app/dao/*/*.xml
+jwt:
+    publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvA0jybkDKBnpbBy4BzWDEzw9Gnz1TXEedV0br5h5f5JO6SVlSo4gE/TNX+cOY9LetUsnSJSMGD30byt/J8RKKrxkmXvZriT/qaPWAutM+8IPLaipwMq54hgDHJQ8j0Mh5kEQ8RxfFWz5Olix02SsF4JDWe2uITdgjNAFL78W7jX3vLxvw9uemky2HYvecbHEBj/LvlwmJGgxYyEdcct+ENVKr4svCv4U6jjvM3dysoipnyUcdfeZI3jg29+QseA56CMKY/B7wyYjeZGR2vR7P1+jE55qTcaA5g2Jd97+NGLliUHxW3BKUEZYN7uUp+ulLnHV7tIhTOsrFrrJpNuUGQIDAQAB
+    privateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC8DSPJuQMoGelsHLgHNYMTPD0afPVNcR51XRuvmHl/kk7pJWVKjiAT9M1f5w5j0t61SydIlIwYPfRvK38nxEoqvGSZe9muJP+po9YC60z7wg8tqKnAyrniGAMclDyPQyHmQRDxHF8VbPk6WLHTZKwXgkNZ7a4hN2CM0AUvvxbuNfe8vG/D256aTLYdi95xscQGP8u+XCYkaDFjIR1xy34Q1Uqviy8K/hTqOO8zd3KyiKmfJRx195kjeODb35Cx4DnoIwpj8HvDJiN5kZHa9Hs/X6MTnmpNxoDmDYl33v40YuWJQfFbcEpQRlg3u5Sn66UucdXu0iFM6ysWusmk25QZAgMBAAECggEAXWytvfcTkWWmKNbvum0kbHb96F3yRIIRXr9eFNPMcMuQNpYkh3CqkR+KtL2G0aMej7UBlDZwj06gVGaoqmoDas3jsLjuAW1SMsY5eYPK4Dyd69IiW6ybwq6pRRaEK6xveAQVVaQBvRRBkXIlDl+ye490xIWnf8sSRYLHQNxPmRIN+OegzBgqRVLvrdAQMx5rbGItqqnuJIjaKzShCXczhrHdMAyJRCb8yHpHH7UaXvncHTyX/irpXv68dDGAfoXPuEMHnWbO68W0PdS1ykOTDNlnk3kxSJswKNpblVm2HnhelXXRjJ7Mw0Oe9NuNAK8kxySa3bNtdTmytfRVzf/NgQKBgQDucaFO2MnCKWRYZn/AjBvPz3qok4nydr/gMgtqR5shsP3HSwOCS+0zBo6XVK06ZKDTUT7oURwizjcxw044eSJXX2CKj03rBrCzW31uW0RdU6VeAjohnLIoRL5Xh9LcsdnoXHdX0bFbi4/RuL+cZ5QTH4UDa3s9qjB9awcJIKL5yQKBgQDJ5axOkCd9BiGbK+VsseJLyCVOFzkB7X6PmuDYYML9z6VJnl6rKRmCGlV8G/2yMscUo3yJJiG7/zDw3Bauj6s1jivWEpbhAl5WXvgwnyrJly9RVao5YHnKvYxEyWhzT70SG09AHNpu588QHr3PCJI2430iILlH+UGmLiqvMUPv0QKBgQClekKCX70VfHhhSTEbxaB/hfQQDeRMWtEqnFCDv5IPva9BofObd2n0YXaP23ok7jUWsmm//JpUJVz0siAU3SxSCqULRAzFMO1sa/AOqFQ3mJdJOK5zKTYS8DJQuLhD5UHfGlzQm3xElgSHfXms581BwDwldXAgCX6Ba8eENBwm0QKBgFj6irTZHT4hfKAZeXQs9XG2lJJU87/gvj1l4aAbDPS1FcBbNpeydlZ7ap9W6rklXc2/u3vqPUXQUu5j4O8vzCG/NZyT9sDVvWPNWQ58p2vO4IC1A19kIGj0nqQWK51eUBJxzLyRusbUDNKq6bYbrezY12Y6C84nkQI/KHqreKhxAoGBAOSv/UxTOsZq5lZngU6NNbBJbAJjff/9IUqe+CGr78m3w6oXxamMYPfaWaoZPcdVSBzEBSn/KGo+TXdJPHsaWmjrNYthJwXgKHi7JnS8yeZwYmOhw3AAihs6kzrLEROiAL7N7D7pcAYPooHvKRralPwhJ3coumCZGT+I1+IMFl+Y

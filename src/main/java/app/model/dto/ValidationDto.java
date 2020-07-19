@@ -4,7 +4,7 @@ import app.validator.Odd;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-05
+ * @date 2019-08-05
  */
 public class ValidationDto {
     @Odd

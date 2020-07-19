@@ -1,82 +1,74 @@
 package app.config;
 
 import app.shiro.MyAuthenticationFilter;
-import app.shiro.MyRealms;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.shiro.authz.AuthorizationException;
-import org.apache.shiro.authz.UnauthenticatedException;
+import org.apache.shiro.authz.Authorizer;
+import org.apache.shiro.authz.ModularRealmAuthorizer;
+import org.apache.shiro.authz.permission.PermissionResolver;
+import org.apache.shiro.authz.permission.RolePermissionResolver;
 import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.DispatcherType;
+import javax.servlet.Filter;
+import java.util.EnumSet;
+import java.util.List;
 
 /**
  * @author pickjob@126.com
- * @time 2020-02-22
+ * @date 2020-02-22
  */
 @Configuration
 public class ShiroConfiguration {
     private static final Logger logger = LogManager.getLogger(ShiroConfiguration.class);
-
-    @ExceptionHandler(UnauthenticatedException.class)
-    @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public void handleException(UnauthenticatedException e) {
-        logger.error(e.getMessage(), e);
-    }
-
-    @ExceptionHandler(AuthorizationException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
-    public void handleException(AuthorizationException e) {
-        logger.error(e.getMessage(), e);
-    }
+    @Autowired(required = false) protected RolePermissionResolver rolePermissionResolver;
+    @Autowired(required = false) protected PermissionResolver permissionResolver;
 
     @Bean
-    public Realm realm() {
-        Realm realm = new MyRealms();
-        return realm;
-    }
-
-    @Bean
-    public MyAuthenticationFilter myAuthenticationFilter() {
-        return new MyAuthenticationFilter();
+    public Authorizer authorizer() {
+        ModularRealmAuthorizer authorizer = new ModularRealmAuthorizer();
+        if (permissionResolver != null) {
+            authorizer.setPermissionResolver(permissionResolver);
+        }
+        if (rolePermissionResolver != null) {
+            authorizer.setRolePermissionResolver(rolePermissionResolver);
+        }
+        return authorizer;
     }
 
     @Bean
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
-        chainDefinition.addPathDefinition("/logout", "logout");
-//        chainDefinition.addPathDefinition("/**", "myAuthen");
+        chainDefinition.addPathDefinition("/v1/token/auth", "noSessionCreation, anon");
+        chainDefinition.addPathDefinition("/v1/**", "noSessionCreation, myAuth[GET,POST,PUT,DELETE]");
         return chainDefinition;
     }
 
     @Bean
     public ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager,
-                                                         ShiroFilterChainDefinition shiroFilterChainDefinition,
-                                                         MyAuthenticationFilter myAuthenticationFilter) {
+                                                         ShiroFilterChainDefinition shiroFilterChainDefinition) {
         ShiroFilterFactoryBean filterFactoryBean = new ShiroFilterFactoryBean();
         filterFactoryBean.setSecurityManager(securityManager);
-        filterFactoryBean.getFilters().put("myAuthen", myAuthenticationFilter);
+        filterFactoryBean.getFilters().put("myAuth", new MyAuthenticationFilter());
         filterFactoryBean.setFilterChainDefinitionMap(shiroFilterChainDefinition.getFilterChainMap());
         return filterFactoryBean;
     }
 
     @Bean
-    public FilterRegistrationBean delegatingFilterProxy(ShiroFilterFactoryBean shiroFilterFactoryBean) throws Exception {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.FORWARD, DispatcherType.INCLUDE, DispatcherType.ERROR);
+    public FilterRegistrationBean<Filter> filterShiroFilterRegistrationBean(ShiroFilterFactoryBean shiroFilterFactoryBean) throws Exception {
+        FilterRegistrationBean<Filter> filterRegistrationBean = new FilterRegistrationBean<>();
         filterRegistrationBean.setFilter((AbstractShiroFilter)shiroFilterFactoryBean.getObject());
-        filterRegistrationBean.setOrder(1);
+        filterRegistrationBean.setDispatcherTypes(EnumSet.allOf(DispatcherType.class));
+        filterRegistrationBean.setUrlPatterns(List.of("/v1/*"));
+        filterRegistrationBean.setOrder(2);
         return filterRegistrationBean;
     }
 }

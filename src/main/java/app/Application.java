@@ -12,6 +12,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 
+/**
+ * @author pickjob@126.com
+ * @date 2019-08-03
+ */
 @SpringBootApplication(
         exclude = DataSourceAutoConfiguration.class
 )
@@ -20,8 +24,8 @@ public class Application implements ApplicationRunner {
     @Autowired private WhoAmIService whoAmIService;
 
     public static void main(String[] args) {
-       ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-       ApplicationContextHolder.setApplicationContext(applicationContext);
+        ApplicationContext applicationContext = SpringApplication.run(Application.class, args);
+        ApplicationContextHolder.setApplicationContext(applicationContext);
     }
 
     @Override

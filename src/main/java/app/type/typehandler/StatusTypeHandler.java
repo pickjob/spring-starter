@@ -1,6 +1,6 @@
-package app.type.handler;
+package app.type.typehandler;
 
-import app.common.enums.ScheduleStatusEnum;
+import app.enums.ScheduleStatusEnum;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.MappedJdbcTypes;
 import org.apache.ibatis.type.MappedTypes;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-01
+ * @date 2019-08-01
  */
 @MappedJdbcTypes({JdbcType.TINYINT})
 @MappedTypes({ScheduleStatusEnum.class})

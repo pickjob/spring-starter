@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author pickjob@126.com
- * @time 2019-01-11
+ * @date 2019-01-11
  */
 @Service
 public class LoggerService {

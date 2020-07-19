@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author pickjob@126.com
- * @time 2019-04-28
+ * @date 2019-04-28
  **/
 @Api(tags = "根目录示例")
 @RequestMapping("/v1")

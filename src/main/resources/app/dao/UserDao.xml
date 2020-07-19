@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="app.dao.UserDao">
+    <select id="getUserIdByAccount" resultType="long">
+        select id from use where account = #{account}
+    </select>
+    <select id="getRolesByUserId" resultType="string">
+        select r.code from role r where r.id in (
+            select j.table_b_id from join_table j where j.table_a_name = 'user' and j.table_a_id = #{userId} and j.table_b_name = 'role')
+    </select>
+    <select id="getPermissionsByUserId" resultType="string">
+        select p.code from permission p where p.id in (
+            select j.table_b_id from join_table j where j.table_a_name = 'role' and j.table_a_id in (
+                select jj.table_b_id from join_table jj where jj.table_a_name = 'user' and jj.table_a_id = #{userId} and jj.table_b_name = 'role' )
+                and j.table_b_name = 'permission')
+    </select>
+</mapper>

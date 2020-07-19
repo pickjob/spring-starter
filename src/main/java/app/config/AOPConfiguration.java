@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author pickjob@126.com
- * @time 2018-12-26
+ * @date 2018-12-26
  */
 @EnableAspectJAutoProxy(
         proxyTargetClass = true,

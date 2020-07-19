@@ -1,6 +1,6 @@
 package app.service;
 
-import app.common.annotation.DataSourceKey;
+import app.aspect.datasource.DataSourceKey;
 import app.dao.WhoAmIDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author pickjob@126.com
- * @time 2020-05-10
+ * @date 2020-05-10
  */
 @Service
 public class WhoAmIService {

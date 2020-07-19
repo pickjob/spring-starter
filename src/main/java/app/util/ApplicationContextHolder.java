@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-01
+ * @date 2019-08-01
  */
 @Component
 public class ApplicationContextHolder  {

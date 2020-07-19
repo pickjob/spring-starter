@@ -1,8 +1,8 @@
-package app.common.enums;
+package app.enums;
 
 /**
  * @author pickjob@126.com
- * @time 2019-08-01
+ * @date 2019-08-01
  */
 public enum ScheduleTypeEnum {
     SPRING(1),
