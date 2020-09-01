@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="app.dao.UserDao">
     <select id="getUserIdByAccount" resultType="long">
-        select id from use where account = #{account}
+        select id from user where account = #{account}
     </select>
     <select id="getRolesByUserId" resultType="string">
         select r.code from role r where r.id in (

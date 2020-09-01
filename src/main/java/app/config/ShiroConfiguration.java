@@ -47,7 +47,7 @@ public class ShiroConfiguration {
     @Bean
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
-        chainDefinition.addPathDefinition("/v1/token/auth", "noSessionCreation, anon");
+        chainDefinition.addPathDefinition("/v1/token/authz", "noSessionCreation, anon");
         chainDefinition.addPathDefinition("/v1/**", "noSessionCreation, myAuth[GET,POST,PUT,DELETE]");
         return chainDefinition;
     }

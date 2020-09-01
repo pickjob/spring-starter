@@ -31,7 +31,7 @@ public class SwaggerConfiguration {
                 .globalOperationParameters(List.of(new ParameterBuilder()
                         .name("Authorization")
                         .description("鉴权token")
-                        .defaultValue("Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE1OTQ5NTYxOTAsInN1YiI6IjEiLCJhY2NvdW50IjoiY2hpbmEifQ.Bc_ht_oDof2LvYIf42zazLPfkslGeVOnH7t1W-N9bhgLoDb-6ionLzzTLBIBSD0idWf1lwxCNamjFWVAiijKpQ16CMNdDf3aXobUAVNL0lwu5haRp5qthe-XrQIcQrt9AdCmTnjkdmhvmwMrCtdIkiXsaxD4ABlJnlDfiFzOBsmxzxMW2oGKTQY13c5MLdXHoAjjLE8Okm5xqqseo47twiBLv_vl8hbziRPueJmJz_e7oZajnALKdEvXPll_t229z7S9Qq-8otFvmS7YqETNeW6iYcr1C9HQ1CAUpWWM9EfTKF51id3B5g5B1j0mjqdBipQI8QV_KqD2rkhDJ6QH_w")
+                        .defaultValue("Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MzA1MDA5MDYsInN1YiI6IjEiLCJhY2NvdW50IjoiY2hpbmEifQ.W1M0OOTyASSw59NWpxQA5zE-ATuw2zkZPuI2rSB2UgomQx2Un2ekkcskFp0j6ep3Fz8GYgKqSNkuNJFX1oBIr6v2a-gzxTtQ0Qvs_ytlzoOAECtLxfMSVRNJltNkHzpe831vv4tIQrkrORg8Y6GuNl2wnG2zvNCdWmQgwGkOlKcsslfriLv5Ktr1WfY02ir-UknCotc4imKLNACSiUa6M9H9hMECOmHG4rpWadTjJAsBHoWj8epa3POrBXCLwS_72mFDEJoweV16jnGvX5laRuHWc0M50C0BT5C6YeMT06tYTEqHJNucublk5WTXUlBgRKrwFzanAhiIx-77PNcJ9Q")
                         .parameterType("header")
                         .modelRef(new ModelRef("header"))
                         .build()))

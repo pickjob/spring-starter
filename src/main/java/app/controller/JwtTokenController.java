@@ -37,7 +37,7 @@ public class JwtTokenController {
     @PostMapping("/authz")
     public MyResponse auth(String account) throws Exception {
         JwtClaims claims = new JwtClaims();
-        claims.setExpirationTime(NumericDate.fromMilliseconds( System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 365));
+        claims.setExpirationTime(NumericDate.fromSeconds( System.currentTimeMillis() / 1000 + 60 * 60 * 24 * 365));
         claims.setSubject(userDao.getUserIdByAccount(account) + "");
         claims.setClaim("account", account);
         JsonWebSignature jws = new JsonWebSignature();
