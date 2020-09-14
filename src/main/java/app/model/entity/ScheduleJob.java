@@ -3,64 +3,37 @@ package app.model.entity;
 import app.enums.ScheduleStatusEnum;
 import app.enums.ScheduleTypeEnum;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Table: schedule_job
  */
+//@ApiModel("定时任务表实体类")
+@Table(name = "schedule_job")
+@Entity
 public class ScheduleJob {
-    /**
-     * Column: id
-     * Remark: 任务id
-     */
+    @GeneratedValue
+    @Id
     private Long id;
-
-    /**
-     * Column: target_bean
-     * Remark: spring bean名称
-     */
+//    @ApiModelProperty("spring bean名称")
     private String targetBean;
-
-    /**
-     * Column: target_method
-     * Remark: spring bean方法
-     */
+//    @ApiModelProperty("spring bean方法")
     private String targetMethod;
-
-    /**
-     * Column: target_argument
-     * Remark: 方法参数
-     */
+//    @ApiModelProperty("方法参数")
     private String targetArgument;
-
-    /**
-     * Column: cron_expression
-     * Remark: cron表达式
-     */
+//    @ApiModelProperty("cron表达式")
     private String cronExpression;
-
-    /**
-     * Column: schedule_type
-     * Remark: 定时任务类型: 1-spring 2-quartz
-     */
+//    @ApiModelProperty("定时任务类型: 1-spring 2-quartz")
     private ScheduleTypeEnum scheduleType;
-
-    /**
-     * Column: schedule_status
-     * Remark: 任务状态: 0-正常 1-暂停 2-删除
-     */
+//    @ApiModelProperty("任务状态: 0-正常 1-暂停 2-删除")
     private ScheduleStatusEnum scheduleStatus;
-
-    /**
-     * Column: remark
-     * Remark: 备注
-     */
+//    @ApiModelProperty("备注")
     private String remark;
-
-    /**
-     * Column: create_time
-     * Remark: 创建时间
-     */
+//    @ApiModelProperty("创建时间")
     private Date createTime;
 
     public Long getId() {

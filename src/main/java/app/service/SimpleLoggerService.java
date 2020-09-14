@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
  * @date 2019-01-11
  */
 @Service
-public class LoggerService {
-    private static final Logger logger = LogManager.getLogger(LoggerService.class);
+public class SimpleLoggerService {
+    private static final Logger logger = LogManager.getLogger(SimpleLoggerService.class);
 
-    public void log(String name) {
-        logger.info("scheduled task, name: {}", name);
+    public void log(String info) {
+        logger.info("SimpleLoggerService, info: {}", info);
     }
 }

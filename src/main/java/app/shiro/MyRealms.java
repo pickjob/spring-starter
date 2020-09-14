@@ -1,7 +1,7 @@
 package app.shiro;
 
 import app.config.properties.JwtProperties;
-import app.dao.UserDao;
+import app.dao.primary.PrimaryUserDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.shiro.authc.AuthenticationException;
@@ -22,7 +22,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-
 /**
  * @author pickjob@126.com
  * @date 2020-02-23
@@ -31,7 +30,7 @@ import java.util.List;
 public class MyRealms extends AuthorizingRealm {
     private static final Logger logger = LogManager.getLogger(MyRealms.class);
     @Autowired private JwtProperties jwtProperties;
-    @Autowired private UserDao userDao;
+    @Autowired private PrimaryUserDao primaryUserDao;
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -58,8 +57,8 @@ public class MyRealms extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         logger.info("{}", principals);
         Integer userId = Integer.valueOf(principals.getPrimaryPrincipal() + "");
-        List<String> roles = userDao.getRolesByUserId(userId);
-        List<String> permissions = userDao.getPermissionsByUserId(userId);
+        List<String> roles = primaryUserDao.getRolesByUserId(userId);
+        List<String> permissions = primaryUserDao.getPermissionsByUserId(userId);
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         authorizationInfo.addRoles(roles);
         authorizationInfo.addStringPermissions(permissions);

@@ -1,4 +1,4 @@
-package app.dao;
+package app.dao.primary;
 
 import app.dao.base.WhoAmIMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2020-05-10
  */
 @Mapper
-public interface WhoAmIDao extends WhoAmIMapper {
+public interface PrimaryWhoAmIDao extends WhoAmIMapper {
 }

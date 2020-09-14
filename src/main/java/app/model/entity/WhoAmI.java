@@ -1,18 +1,21 @@
 package app.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * Table: who_am_i
  */
+//@ApiModel("当前数据库表实体")
+@Table(name = "who_am_i")
+@Entity
 public class WhoAmI {
-    /**
-     * Column: id
-     */
+    @Id
+    @GeneratedValue
     private Byte id;
-
-    /**
-     * Column: name
-     * Remark: 当前数据库名称
-     */
+//    @ApiModelProperty("当前数据库名称")
     private String name;
 
     public Byte getId() {

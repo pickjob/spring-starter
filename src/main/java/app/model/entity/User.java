@@ -1,32 +1,23 @@
 package app.model.entity;
 
+
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Table: user
  */
+//@ApiModel("用户表实体")
+@Entity
 public class User {
-    /**
-     * Column: id
-     */
+    @GeneratedValue
+    @Id
     private Long id;
-
-    /**
-     * Column: account
-     * Remark: 用户账户
-     */
+//    @ApiModelProperty("账户名")
     private String account;
-
-    /**
-     * Column: password
-     * Remark: 用户密码
-     */
+//    @ApiModelProperty("用户密码")
     private String password;
-
-    /**
-     * Column: create_time
-     * Remark: 创建时间
-     */
+//    @ApiModelProperty("创建时间")
     private Date createTime;
 
     public Long getId() {

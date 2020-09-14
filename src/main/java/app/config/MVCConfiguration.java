@@ -13,6 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.DispatcherType;
@@ -24,7 +25,7 @@ import java.util.List;
  * @author pickjob@126.com
  * @date 2020-05-13
  */
-//@EnableWebMvc
+@EnableWebMvc
 @Configuration
 public class MVCConfiguration implements WebMvcConfigurer {
     private static final Logger logger = LogManager.getLogger(MVCConfiguration.class);

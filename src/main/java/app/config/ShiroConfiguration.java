@@ -29,8 +29,8 @@ import java.util.List;
 @Configuration
 public class ShiroConfiguration {
     private static final Logger logger = LogManager.getLogger(ShiroConfiguration.class);
-    @Autowired(required = false) protected RolePermissionResolver rolePermissionResolver;
-    @Autowired(required = false) protected PermissionResolver permissionResolver;
+    @Autowired(required = false) private RolePermissionResolver rolePermissionResolver;
+    @Autowired(required = false) private PermissionResolver permissionResolver;
 
     @Bean
     public Authorizer authorizer() {

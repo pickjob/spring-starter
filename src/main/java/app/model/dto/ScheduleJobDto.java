@@ -1,29 +1,31 @@
 package app.model.dto;
 
 import app.enums.ScheduleTypeEnum;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.validation.constraints.NotNull;
 
-@ApiModel
+/**
+ * @author pickjob@126.com
+ * @date 2019-02-21
+ */
 public class ScheduleJobDto {
-    @ApiModelProperty(name = "targetName", value = "目标Bean名称", example = "loggerService", required = true)
+    @Schema(name = "targetName", description = "目标Bean名称", required = true, example = "loggerService")
     @NotNull(message = "targetName不能为空")
     private String targetName;
-    @ApiModelProperty(name = "targetMethod", value = "目标Bean方法", example = "log", required = true)
+    @Schema(name = "targetMethod", description = "目标Bean方法", required = true, example = "log")
     @NotNull
     private String targetMethod;
-    @ApiModelProperty(name = "targetArguement", value = "目标Bean方法参数", example = "arg", required = true)
+    @Schema(name = "targetArguement", description = "目标Bean方法参数", required = true, example = "arg")
     @NotNull
     private String targetArguement;
-    @ApiModelProperty(name = "expression", value = "cron表达式", example = "* * * * * *", required = true)
+    @Schema(name = "expression", description = "cron表达式", required = true, example = "* * * * * *")
     @NotNull
     private String expression;
-    @ApiModelProperty(name = "scheduleTypeEnum", value = "定时任务执行器 1-Spring, 2-Quartz", example = "1", allowableValues = "1,2", required = true)
+    @Schema(name = "scheduleTypeEnum", description = "定时任务执行器 1-Spring, 2-Quartz", required = true, allowableValues = {"1", "2"})
     @NotNull
     private ScheduleTypeEnum scheduleTypeEnum;
-    @ApiModelProperty(name = "remark", value = "备注")
+    @Schema(name = "remark", description = "备注", required = true)
     private String remark;
 
     public String getTargetName() {

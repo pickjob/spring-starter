@@ -10,6 +10,10 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/**
+ * @author pickjob@126.com
+ * @date 2019-02-21
+ */
 @Configuration
 public class QuartzConfigruation {
     private static final Logger logger = LogManager.getLogger(QuartzConfigruation.class);

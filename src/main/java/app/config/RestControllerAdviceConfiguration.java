@@ -11,6 +11,10 @@ import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * @author pickjob@126.com
+ * @date 2019-02-21
+ */
 @RestControllerAdvice
 public class RestControllerAdviceConfiguration {
     private static final Logger logger = LogManager.getLogger(RestControllerAdviceConfiguration.class);

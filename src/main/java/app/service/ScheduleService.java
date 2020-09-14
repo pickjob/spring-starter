@@ -1,6 +1,6 @@
-package app.service.schedule;
+package app.service;
 
-import app.dao.ScheduleJobDao;
+import app.dao.primary.PrimaryScheduleJobDao;
 import app.enums.ScheduleStatusEnum;
 import app.enums.ScheduleTypeEnum;
 import app.model.entity.ScheduleJob;
@@ -32,7 +32,7 @@ public class ScheduleService {
     private Map<Long, ScheduledFuture> scheduleJobMap = new ConcurrentHashMap<>();
     @Autowired private TaskScheduler taskScheduler;
     @Autowired private Scheduler scheduler;
-    @Autowired private ScheduleJobDao scheduleJobDao;
+    @Autowired private PrimaryScheduleJobDao scheduleJobDao;
 
     @Transactional(rollbackFor = Throwable.class)
     public void addScheduleJob(ScheduleJobDto scheduleJobVo) {

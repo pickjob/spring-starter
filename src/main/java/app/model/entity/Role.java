@@ -1,32 +1,26 @@
 package app.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Table: role
  */
+//@ApiModel("角色表实体")
+@Table(name = "role")
+@Entity
 public class Role {
-    /**
-     * Column: id
-     */
+    @GeneratedValue
+    @Id
     private Long id;
-
-    /**
-     * Column: code
-     * Remark: 角色代码
-     */
+//    @ApiModelProperty("角色代码")
     private String code;
-
-    /**
-     * Column: name
-     * Remark: 角色名称
-     */
+//    @ApiModelProperty("角色名称")
     private String name;
-
-    /**
-     * Column: create_time
-     * Remark: 创建时间
-     */
+//    @ApiModelProperty("创建时间")
     private Date createTime;
 
     public Long getId() {

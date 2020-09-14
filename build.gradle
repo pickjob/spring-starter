@@ -30,6 +30,11 @@ dependencies {
     implementation "org.bitbucket.b_c:jose4j:0.7.2"
     // shiro
     implementation "org.apache.shiro:shiro-spring-boot-web-starter:1.5.0"
+    // springdoc
+    implementation "org.springdoc:springdoc-openapi-common:${springdocVersion}"
+    implementation "org.springdoc:springdoc-openapi-ui:${springdocVersion}"
+    implementation "org.springdoc:springdoc-openapi-hateoas:${springdocVersion}"
+    implementation "org.springdoc:springdoc-openapi-data-rest:${springdocVersion}"
 
     implementation "org.javassist:javassist:3.20.0-GA"
     implementation "org.aspectj:aspectjweaver:1.9.3"
@@ -41,15 +46,13 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-quartz"
     implementation "org.springframework.boot:spring-boot-starter-validation"
     implementation "org.springframework.boot:spring-boot-starter-data-jdbc"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
     implementation "org.springframework.boot:spring-boot-starter-data-redis"
+    implementation "org.springframework.boot:spring-boot-starter-data-rest"
     implementation "org.springframework.boot:spring-boot-starter-web"
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
     implementation "org.springframework.boot:spring-boot-starter-websocket"
     implementation "org.springframework.boot:spring-boot-starter-actuator"
-
-    // swagger
-    implementation "io.springfox:springfox-swagger2:2.9.2"
-    implementation "io.springfox:springfox-swagger-ui:2.9.2"
 
     // assist
     implementation "org.springframework.boot:spring-boot-configuration-processor"
@@ -75,4 +78,5 @@ compileJava {
  */
 bootRun {
     main = "${mainClassName}"
+    jvmArgs = ["-Xms300M", "-Xmx300M"]
 }

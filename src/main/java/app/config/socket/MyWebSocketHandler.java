@@ -15,6 +15,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 @Service
 public class MyWebSocketHandler extends TextWebSocketHandler {
     private static final Logger logger = LogManager.getLogger(MyWebSocketHandler.class);
+
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
         super.handleTextMessage(session, message);

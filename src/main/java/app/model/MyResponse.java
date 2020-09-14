@@ -7,6 +7,10 @@ import org.springframework.validation.FieldError;
 import java.io.Serializable;
 import java.util.HashMap;
 
+/**
+ * @author pickjob@126.com
+ * @date 2019-02-21
+ */
 public class MyResponse implements Serializable {
     private int code;
     private String description;

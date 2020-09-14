@@ -1,32 +1,27 @@
 package app.model.entity;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * Table: permission
  */
+//@ApiModel("权限表实体")
+@Table(name = "permission")
+@Entity
 public class Permission {
-    /**
-     * Column: id
-     */
+    @GeneratedValue
+    @Id
     private Long id;
-
-    /**
-     * Column: code
-     * Remark: 权限代码
-     */
+//    @ApiModelProperty("权限代码")
     private String code;
-
-    /**
-     * Column: name
-     * Remark: 权限名称
-     */
+//    @ApiModelProperty("权限名称")
     private String name;
-
-    /**
-     * Column: create_time
-     * Remark: 创建时间
-     */
+//    @ApiModelProperty("创建时间")
     private Date createTime;
 
     public Long getId() {

@@ -1,4 +1,4 @@
-package app.dao;
+package app.dao.primary;
 
 import app.dao.base.ScheduleJobMapper;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,5 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @date 2019-05-29
  */
 @Mapper
-public interface ScheduleJobDao extends ScheduleJobMapper {
+public interface PrimaryScheduleJobDao extends ScheduleJobMapper {
 }

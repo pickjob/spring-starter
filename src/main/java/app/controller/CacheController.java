@@ -1,9 +1,11 @@
 package app.controller;
 
 import app.model.MyResponse;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.cache.annotation.CacheEvict;
@@ -18,14 +20,17 @@ import java.util.Map;
  * @author pickjob@126.com
  * @date 2019-08-13
  */
-@Api( tags = "缓存示例")
+@Tag(name = "缓存示例")
 @RequestMapping("/v1/cache")
 @RestController
 public class CacheController {
     private static final Logger logger = LogManager.getLogger(CacheController.class);
 
-    @ApiOperation("自动缓存")
-    @ApiImplicitParam(name = "id", value = "缓存ID", defaultValue = "12", paramType = "query", required = true)
+    @Operation(
+            summary = "自动缓存",
+            security = { @SecurityRequirement(name = "auth") },
+            parameters = @Parameter(name = "id", description = "缓存ID", in = ParameterIn.QUERY, required = true, example = "12")
+    )
     @Cacheable(value = "demoCache", key = "#id")
     @GetMapping("/auto-cache")
     public MyResponse autoCache(Integer id) {
@@ -33,8 +38,11 @@ public class CacheController {
         return MyResponse.success(createData(id));
     }
 
-    @ApiOperation("强制设置缓存")
-    @ApiImplicitParam(name = "id", value = "缓存ID", defaultValue = "12", required = true)
+    @Operation(
+            summary = "强制设置缓存",
+            security = { @SecurityRequirement(name = "auth") },
+            parameters = @Parameter(name = "id", description = "缓存ID", required = true, example = "12")
+    )
     @CachePut(value = "demoCache", key = "#id")
     @PostMapping("/force-cache")
     public MyResponse forceCache(Integer id) {
@@ -42,8 +50,11 @@ public class CacheController {
         return MyResponse.success(createData(id));
     }
 
-    @ApiOperation("删除缓存")
-    @ApiImplicitParam(name = "id", value = "缓存ID", defaultValue = "12", required = true)
+    @Operation(
+            summary = "删除缓存",
+            security = { @SecurityRequirement(name = "auth") },
+            parameters = @Parameter (name = "id", description="缓存ID", example = "12", required = true)
+    )
     @CacheEvict(value = "demoCache", key = "#id")
     @DeleteMapping("/evict-cache")
     public MyResponse evictCache(Integer id) {
