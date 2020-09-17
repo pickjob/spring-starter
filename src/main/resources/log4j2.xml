@@ -24,13 +24,14 @@
             <appender-ref ref="console"/>
             <appender-ref ref="file"/>
         </root>
-        <asyncLogger name="org.springframework.data.mongodb" level="debug" additivity="false">
-            <appender-ref ref="console"/>
-            <appender-ref ref="file"/>
-        </asyncLogger>
         <asyncLogger name="app.dao" level="debug" additivity="false">
             <appender-ref ref="console"/>
             <appender-ref ref="file"/>
         </asyncLogger>
+        <asyncLogger name="org.springframework.data.mongodb" level="debug" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+        </asyncLogger>
+        <logger name="org.springframework.data.elasticsearch.client.WIRE" level="trace"/>
     </loggers>
 </configuration>

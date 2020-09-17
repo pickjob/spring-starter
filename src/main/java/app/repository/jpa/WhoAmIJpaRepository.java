@@ -1,13 +1,13 @@
-package app.repository;
+package app.repository.jpa;
 
-import app.model.entity.User;
+import app.model.entity.WhoAmI;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
  * @Author pickjob@126.com
- * @Date 2020-09-03
+ * @Date 2020-09-08
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface WhoAmIJpaRepository extends JpaRepository<WhoAmI, Byte> {
 }

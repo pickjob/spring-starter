@@ -31,6 +31,18 @@ spring:
     data:
         rest:
             basePath: /rest-data
+        mongodb:
+            host: mongo
+            port: 27017
+            database: mongo
+            username: china
+            password: chinese
+            auto-index-creation: true
+    elasticsearch:
+        rest:
+            username: china
+            password: chinese
+            uris: http://elasticsearch:9200
     redis:
         host: redis
         port: 6379

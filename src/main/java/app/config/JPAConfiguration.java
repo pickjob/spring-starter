@@ -11,7 +11,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  *   hibernate配置: AvailableSettings
  */
 @EnableJpaRepositories(
-        basePackages = "app.repository"
+        basePackages = "app.repository.jpa"
 )
 @Configuration
 class JPAConfiguration {

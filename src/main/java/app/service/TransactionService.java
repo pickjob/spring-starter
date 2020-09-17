@@ -3,7 +3,7 @@ package app.service;
 import app.dao.primary.PrimaryWhoAmIDao;
 import app.dao.secondary.SecondaryWhoAmIDao;
 import app.model.entity.WhoAmI;
-import app.repository.WhoAmIRepository;
+import app.repository.jpa.WhoAmIJpaRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class TransactionService {
     private static final String LONG_AND_NEVER_INSERT_FAIL_NAME = "This is a long name, and nerver insert success";
     @Autowired private PrimaryWhoAmIDao primaryWhoAmIDao;
     @Autowired private SecondaryWhoAmIDao secondaryWhoAmIDao;
-    @Autowired private WhoAmIRepository whoAmIRepository;
+    @Autowired private WhoAmIJpaRepository whoAmIRepository;
     @Autowired private WhoAmIService whoAmIService;
 
     @Transactional(rollbackFor = Throwable.class, transactionManager = "transactionManager")

@@ -2,7 +2,7 @@ package app.service;
 
 import app.aspect.datasource.DataSourceKey;
 import app.model.entity.WhoAmI;
-import app.repository.WhoAmIRepository;
+import app.repository.jpa.WhoAmIJpaRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Optional;
 @Service
 public class WhoAmIService {
     private static final Logger logger = LogManager.getLogger(WhoAmIService.class);
-    @Autowired private WhoAmIRepository whoAmIRepository;
+    @Autowired private WhoAmIJpaRepository whoAmIRepository;
 
     @DataSourceKey(DataSourceKey.DataSourceKeyEnum.PRIMARY)
     public void showPrimary() {

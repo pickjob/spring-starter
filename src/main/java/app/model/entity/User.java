@@ -1,23 +1,22 @@
 package app.model.entity;
 
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Date;
 
 /**
  * Table: user
  */
-//@ApiModel("用户表实体")
+@org.springframework.data.elasticsearch.annotations.Document(indexName = "user")
+@org.springframework.data.mongodb.core.mapping.Document
 @Entity
 public class User {
     @GeneratedValue
     @Id
     private Long id;
-//    @ApiModelProperty("账户名")
     private String account;
-//    @ApiModelProperty("用户密码")
     private String password;
-//    @ApiModelProperty("创建时间")
     private Date createTime;
 
     public Long getId() {
