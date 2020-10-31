@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration monitorInterval="30">
+    <!--
+        -Dlog4j2.contextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector
+        -Dlog4j2.asyncLoggerWaitStrategy=busyspin
+    -->
+    <properties>
+        <property name="fileName">logs/application.log</property>
+        <property name="filePattern">logs/%d{yyyy-MM-dd}/application.log.gz</property>
+    </properties>
+    <appenders>
+        <console name="console">
+            <patternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %t [%p] %c{1.} - %msg%n"/>
+        </console>
+        <rollingFile name="file" fileName="${fileName}" filePattern="${filePattern}">
+            <patternLayout pattern="%d{HH:mm:ss} %t [%p] %c{1.} - %msg%n"/>
+            <policies>
+                <timeBasedTriggeringPolicy/>
+            </policies>
+        </rollingFile>
+    </appenders>
+    <loggers>
+        <root level="info">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+        </root>
+        <asyncLogger name="spring.starter.data.rdms.dao" level="debug" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+        </asyncLogger>
+        <asyncLogger name="org.springframework.data.mongodb" level="debug" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file"/>
+        </asyncLogger>
+        <logger name="org.springframework.data.elasticsearch.client.WIRE" level="trace"/>
+    </loggers>
+</configuration>

@@ -1,0 +1,19 @@
+server:
+    port: 2010
+    shutdown: graceful
+spring:
+    lifecycle:
+        timeout-per-shutdown-phase: 60s
+# /actuator/ + beans caches conditions configprops env health metrics mappings sessions shutdown threaddump
+management:
+    endpoint:
+        health:
+            show-details: always
+            show-components: always
+    endpoints:
+        enabled-by-default: true
+        web:
+            exposure:
+                include: "*"
+    server:
+        address: 127.0.0.1

@@ -1,0 +1,64 @@
+spring:
+    jpa:
+        show-sql: true
+        properties:
+            hibernate:
+                format_sql: true
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+                hbm2ddl:
+                    auto: none
+    data:
+        rest:
+            basePath: /rest-data
+datasource:
+    schema-primary:
+        jdbc-url: jdbc:mysql://wsl2:3306/primary?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+        username: china
+        password: chinese
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        maximum-pool-size: 10
+        data-source-properties:
+            cachePrepStmts: true
+            prepStmtCacheSize: 250
+            prepStmtCacheSqlLimit: 2048
+            useServerPrepStmts: true
+            useLocalSessionState: true
+            rewriteBatchedStatements: true
+            cacheResultSetMetadata: true
+            cacheServerConfiguration: true
+            elideSetAutoCommits: true
+            maintainTimeStats: false
+    schema-secondary:
+        jdbc-url: jdbc:mysql://wsl2:3306/secondary?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+        username: china
+        password: chinese
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        maximum-pool-size: 10
+        data-source-properties:
+            cachePrepStmts: true
+            prepStmtCacheSize: 250
+            prepStmtCacheSqlLimit: 2048
+            useServerPrepStmts: true
+            useLocalSessionState: true
+            rewriteBatchedStatements: true
+            cacheResultSetMetadata: true
+            cacheServerConfiguration: true
+            elideSetAutoCommits: true
+            maintainTimeStats: false
+    schema-quartz:
+        jdbc-url: jdbc:mysql://wsl2:3306/quartz?autoReconnect=true&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+        username: china
+        password: chinese
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        maximum-pool-size: 1
+        data-source-properties:
+            cachePrepStmts: true
+            prepStmtCacheSize: 250
+            prepStmtCacheSqlLimit: 2048
+            useServerPrepStmts: true
+            useLocalSessionState: true
+            rewriteBatchedStatements: true
+            cacheResultSetMetadata: true
+            cacheServerConfiguration: true
+            elideSetAutoCommits: true
+            maintainTimeStats: false

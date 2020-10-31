@@ -1,0 +1,26 @@
+plugins {
+    id "application"
+}
+
+application {
+    mainClass = "spring.starter.data.redis.SpringRedisApplication"
+}
+
+dependencies {
+    implementation project(":spring-starter-base")
+    // common pool
+    implementation "org.apache.commons:commons-pool2:2.7.0"
+    // redis
+    implementation "org.springframework.boot:spring-boot-starter-data-redis"
+}
+
+run {
+    jvmArgs = [
+            "-Dfile.encoding=UTF-8",
+            "-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector",
+            "-DAsyncLogger.WaitStrategy=busyspin",
+            "--enable-preview",
+            "-Xms300M",
+            "-Xmx500M"
+    ]
+}

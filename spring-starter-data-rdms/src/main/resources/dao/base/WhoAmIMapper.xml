@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="spring.starter.data.rdms.dao.base.WhoAmIMapper">
+    <select id="selectByPrimaryKey"
+            parameterType="java.lang.Long"
+            resultType="spring.starter.data.rdms.entity.WhoAmI">
+        select
+        id, name
+        from who_am_i
+        where id = #{id}
+    </select>
+    <insert id="insert" parameterType="spring.starter.data.rdms.entity.WhoAmI"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        insert into who_am_i (name)
+        values (#{name})
+    </insert>
+</mapper>
