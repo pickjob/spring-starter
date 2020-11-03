@@ -1,0 +1,24 @@
+plugins {
+    id "application"
+}
+
+application {
+    mainClass = "spring.starter.message.rocketmq.SpringRocketmqApplication"
+}
+
+dependencies {
+    implementation project(":spring-starter-base")
+    // rocketmq
+    implementation "org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.1"
+}
+
+run {
+    jvmArgs = [
+            "-Dfile.encoding=UTF-8",
+            "-DLog4jContextSelector=org.apache.logging.log4j.core.async.AsyncLoggerContextSelector",
+            "-DAsyncLogger.WaitStrategy=busyspin",
+            "--enable-preview",
+            "-Xms300M",
+            "-Xmx500M"
+    ]
+}

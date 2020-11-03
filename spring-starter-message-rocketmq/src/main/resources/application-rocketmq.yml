@@ -1,0 +1,6 @@
+rocketmq:
+    name-server: wsl2:9876
+    producer:
+        group: PRODUCER_GROUP
+        enable-msg-trace: true
+        customized-trace-topic: MSG_TRACE_TOPIC
