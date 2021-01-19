@@ -9,8 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import spring.starter.data.rdms.utils.ApplicationContextHolder;
 
-import javax.transaction.Transactional;
-
 /**
  * @Author pickjob@126.com
  * @Date 2020-10-30
@@ -26,15 +24,14 @@ import javax.transaction.Transactional;
         }
 )
 public class SpringRdmsApplication implements CommandLineRunner {
-        private static final Logger logger = LogManager.getLogger(SpringRdmsApplication.class);
+    private static final Logger logger = LogManager.getLogger(SpringRdmsApplication.class);
 
-        public static void main(String[] args) {
-                ApplicationContextHolder.setApplicationContext(SpringApplication.run(SpringRdmsApplication.class, args));
-        }
+    public static void main(String[] args) {
+        ApplicationContextHolder.setApplicationContext(SpringApplication.run(SpringRdmsApplication.class, args));
+    }
 
-        @Transactional
-        @Override
-        public void run(String... args) throws Exception {
-                logger.info("rdms is running ...");
-        }
+    @Override
+    public void run(String... args) throws Exception {
+        logger.info("rdms is running ...");
+    }
 }

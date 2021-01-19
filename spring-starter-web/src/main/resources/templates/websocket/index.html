@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Web Socket ShowCase</title>
 </head>
 <body>
@@ -15,18 +16,20 @@
         document.getElementById("info").innerHTML = document.getElementById("info").innerHTML + "<br />" + msg;
     }
     // Create WebSocket connection.
-    const webSocket = new WebSocket('ws://localhost:2010/websocket/chat');
+    const webSocket = new WebSocket('ws://' + window.location.host + '/websocket/chat');
     // Connection opened
     webSocket.addEventListener('open', function (event) {
         appendInfo('Connect success!');
     });
     // Listen for messages
     webSocket.addEventListener('message', function (event) {
-        appendInfo('Message from server ' + event.data);
+        appendInfo(event.data);
     });
     document.getElementById("clickMeBtn").addEventListener('click', function() {
         const msg = document.getElementById("nameVal").value;
-        webSocket.send(msg);
+        if (msg) {
+            webSocket.send(msg);
+        }
     });
 </script>
 </body>

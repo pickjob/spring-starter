@@ -19,9 +19,10 @@ public class WebSocketConfiguration implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry.addHandler(myWebSocketHandler, "/websocket/chat")
-                .addInterceptors(new HttpSessionHandshakeInterceptor());;
+                .addInterceptors(new HttpSessionHandshakeInterceptor())
+                .setAllowedOrigins("*")
+        ;
     }
-
 //    支持@ServerEndpoint配置
 //    @Bean
 //    public ServerEndpointExporter serverEndpointExporter() {

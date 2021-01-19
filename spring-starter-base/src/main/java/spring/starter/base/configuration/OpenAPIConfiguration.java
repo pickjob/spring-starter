@@ -34,7 +34,7 @@ public class OpenAPIConfiguration {
                     .name(SecurityConsts.SECURITY_HEADER)
                     .description("Authorization： JWT Header")
                     .schema(new StringSchema())
-                    .example("Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MDQwNjEwMTYsInN1YiI6InN1YmplY3QiLCJhY2NvdW50IjoiY2hpbmEifQ.fcgJIbTmljzDkDyC3KbGA2vFuiatxGUEpDcj5VMw__magKVaIfj2wCEFfMgTuT80INV4lufd5D7PWkZn3B7jaeK2wCbdGO6mrLeNolP_gDHJM_pv622vFQ_8iRxhTl67wfkd9Ly6FqoTa0DQgLS7rgU2t4NU_EWN44Fd2vbuC9uWg6M2RhUcKeuZvx-ZPhedkFZzsO2e_-17ES3gxj2Cvzi9DqU7Zn8cILz2MZ60AkJhPxw5Q7d1s-j2e1i8THuJSm_MY4C_CvK7LsP5FmvL2mdrup1JxgJ2DnXmQQYqksx69ZkmiTn7EX_yRT_hGNYloxdLKJfK4HqNHsMCS5tAXg")
+                    .example("Bearer eyJhbGciOiJSUzI1NiJ9.eyJleHAiOjE2MzYxODkxOTksInN1YiI6InN1YmplY3QiLCJhY2NvdW50IjoiY2hpbmEifQ.S9AwUpBJ6N6-AwkW2vw7MRZ4PlPFa9QxEpX6pGS2TEiRaI7BUnhuj5zvhAWIrkmnpBpfTMLO-UuKf2nStcTSgX81FxfpqMVw9ITPAMch5X9QMfdZ3TF3Ess33ajSDa0zQUC28aJkdcVsHxnFYOpIgaZbJRa881ZOv-I4Fzw5muaKGUYYjXvp6sm-j264mBspXsp-AI_RCUc4IPZqHtD9Dm5Fh8KUzk174pklvdP97JVwPBAQn-IafOVKk1SE05KRI9OhaS8d_9xgz0iZGv-5W4es0wks3lbIvpTCVXneFck5e3UrCkBK53Ex6n72_KooRGSbeggDc4PL6_NM3RhAxQ")
                     .required(false);
             operation.addParametersItem(customHeaderVersion);
             return operation;

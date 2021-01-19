@@ -1,5 +1,6 @@
-rootProject.name = 'spring-starter'
-include 'spring-starter-web'
-include 'spring-starter-base'
-include 'spring-starter-data-rdms'
-include 'spring-starter-data-redis'
+rootProject.name = "spring-starter"
+include "spring-starter-web"
+include "spring-starter-base"
+include "spring-starter-data-rdms"
+include "spring-starter-data-redis"
+include "spring-starter-message-rocketmq"

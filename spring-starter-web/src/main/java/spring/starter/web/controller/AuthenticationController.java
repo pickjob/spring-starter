@@ -39,7 +39,7 @@ public class AuthenticationController {
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public MyResponse authentication(String account) throws Exception {
         JwtClaims claims = new JwtClaims();
-        claims.setExpirationTime(NumericDate.fromSeconds( System.currentTimeMillis() / 1000 + 60 * 60 * 24));
+        claims.setExpirationTime(NumericDate.fromSeconds( System.currentTimeMillis() / 1000 + 60 * 60 * 24 * 365));
         claims.setSubject("subject");
         claims.setClaim("account", account);
         JsonWebSignature jws = new JsonWebSignature();
