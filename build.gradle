@@ -1,5 +1,15 @@
+plugins {
+    id "java"
+    id "idea"
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+    id "org.springframework.boot" version "${springBootVersion}"
+}
+
 subprojects {
     apply plugin: "java"
+    apply plugin: "idea"
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: "org.springframework.boot"
 
     group = "pickjob"
     version = "0.0.1"
@@ -26,15 +36,15 @@ subprojects {
         implementation "org.aspectj:aspectjweaver:1.9.3"
         implementation "cglib:cglib:3.2.11"
         // spring boot starter
-        implementation "org.springframework.boot:spring-boot-starter-log4j2:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-starter-cache:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
-        implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-starter-log4j2"
+        implementation "org.springframework.boot:spring-boot-starter-aop"
+        implementation "org.springframework.boot:spring-boot-starter-cache"
+        implementation "org.springframework.boot:spring-boot-starter-web"
+        implementation "org.springframework.boot:spring-boot-starter-actuator"
         // prometheus 支持
         implementation "io.micrometer:micrometer-registry-prometheus:1.5.6"
         // assist
-        implementation "org.springframework.boot:spring-boot-configuration-processor:${springBootVersion}"
+        implementation "org.springframework.boot:spring-boot-configuration-processor"
     }
 
     compileJava {
@@ -57,5 +67,13 @@ subprojects {
         }
         jcenter()
         mavenCentral()
+    }
+
+    idea {
+        module {
+            jdkName = "15"
+            downloadJavadoc = true
+            downloadSources = true
+        }
     }
 }

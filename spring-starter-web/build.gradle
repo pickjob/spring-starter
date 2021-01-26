@@ -14,8 +14,12 @@ dependencies {
     implementation "org.bitbucket.b_c:jose4j:0.7.2"
     // shiro
     implementation "org.apache.shiro:shiro-spring-boot-web-starter:1.5.0"
-    implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-websocket:${springBootVersion}"
+    // resilience4j
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:${resilience4jVersion}"
+    implementation "io.github.resilience4j:resilience4j-micrometer:${resilience4jVersion}"
+    // spring
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation "org.springframework.boot:spring-boot-starter-websocket"
 }
 
 run {

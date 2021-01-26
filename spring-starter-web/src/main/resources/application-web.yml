@@ -13,3 +13,85 @@ spring:
 jwt:
     publicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvA0jybkDKBnpbBy4BzWDEzw9Gnz1TXEedV0br5h5f5JO6SVlSo4gE/TNX+cOY9LetUsnSJSMGD30byt/J8RKKrxkmXvZriT/qaPWAutM+8IPLaipwMq54hgDHJQ8j0Mh5kEQ8RxfFWz5Olix02SsF4JDWe2uITdgjNAFL78W7jX3vLxvw9uemky2HYvecbHEBj/LvlwmJGgxYyEdcct+ENVKr4svCv4U6jjvM3dysoipnyUcdfeZI3jg29+QseA56CMKY/B7wyYjeZGR2vR7P1+jE55qTcaA5g2Jd97+NGLliUHxW3BKUEZYN7uUp+ulLnHV7tIhTOsrFrrJpNuUGQIDAQAB
     privateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC8DSPJuQMoGelsHLgHNYMTPD0afPVNcR51XRuvmHl/kk7pJWVKjiAT9M1f5w5j0t61SydIlIwYPfRvK38nxEoqvGSZe9muJP+po9YC60z7wg8tqKnAyrniGAMclDyPQyHmQRDxHF8VbPk6WLHTZKwXgkNZ7a4hN2CM0AUvvxbuNfe8vG/D256aTLYdi95xscQGP8u+XCYkaDFjIR1xy34Q1Uqviy8K/hTqOO8zd3KyiKmfJRx195kjeODb35Cx4DnoIwpj8HvDJiN5kZHa9Hs/X6MTnmpNxoDmDYl33v40YuWJQfFbcEpQRlg3u5Sn66UucdXu0iFM6ysWusmk25QZAgMBAAECggEAXWytvfcTkWWmKNbvum0kbHb96F3yRIIRXr9eFNPMcMuQNpYkh3CqkR+KtL2G0aMej7UBlDZwj06gVGaoqmoDas3jsLjuAW1SMsY5eYPK4Dyd69IiW6ybwq6pRRaEK6xveAQVVaQBvRRBkXIlDl+ye490xIWnf8sSRYLHQNxPmRIN+OegzBgqRVLvrdAQMx5rbGItqqnuJIjaKzShCXczhrHdMAyJRCb8yHpHH7UaXvncHTyX/irpXv68dDGAfoXPuEMHnWbO68W0PdS1ykOTDNlnk3kxSJswKNpblVm2HnhelXXRjJ7Mw0Oe9NuNAK8kxySa3bNtdTmytfRVzf/NgQKBgQDucaFO2MnCKWRYZn/AjBvPz3qok4nydr/gMgtqR5shsP3HSwOCS+0zBo6XVK06ZKDTUT7oURwizjcxw044eSJXX2CKj03rBrCzW31uW0RdU6VeAjohnLIoRL5Xh9LcsdnoXHdX0bFbi4/RuL+cZ5QTH4UDa3s9qjB9awcJIKL5yQKBgQDJ5axOkCd9BiGbK+VsseJLyCVOFzkB7X6PmuDYYML9z6VJnl6rKRmCGlV8G/2yMscUo3yJJiG7/zDw3Bauj6s1jivWEpbhAl5WXvgwnyrJly9RVao5YHnKvYxEyWhzT70SG09AHNpu588QHr3PCJI2430iILlH+UGmLiqvMUPv0QKBgQClekKCX70VfHhhSTEbxaB/hfQQDeRMWtEqnFCDv5IPva9BofObd2n0YXaP23ok7jUWsmm//JpUJVz0siAU3SxSCqULRAzFMO1sa/AOqFQ3mJdJOK5zKTYS8DJQuLhD5UHfGlzQm3xElgSHfXms581BwDwldXAgCX6Ba8eENBwm0QKBgFj6irTZHT4hfKAZeXQs9XG2lJJU87/gvj1l4aAbDPS1FcBbNpeydlZ7ap9W6rklXc2/u3vqPUXQUu5j4O8vzCG/NZyT9sDVvWPNWQ58p2vO4IC1A19kIGj0nqQWK51eUBJxzLyRusbUDNKq6bYbrezY12Y6C84nkQI/KHqreKhxAoGBAOSv/UxTOsZq5lZngU6NNbBJbAJjff/9IUqe+CGr78m3w6oXxamMYPfaWaoZPcdVSBzEBSn/KGo+TXdJPHsaWmjrNYthJwXgKHi7JnS8yeZwYmOhw3AAihs6kzrLEROiAL7N7D7pcAYPooHvKRralPwhJ3coumCZGT+I1+IMFl+Y
+# resilience4j
+resilience4j:
+    circuitbreaker:
+        configs:
+            default:
+                registerHealthIndicator: true
+                # 失败率阈值
+                failureRateThreshold: 50
+                # 慢调用阈值
+                slowCallRateThreshold: 100
+                # 评判慢调用时间的阈值
+                slowCallDurationThreshold: 60000ms
+                # 滑动窗口的类型 COUNT_BASED TIME_BASED
+                slidingWindowType: COUNT_BASED
+                # 滑动窗口的大小
+                slidingWindowSize: 100
+                # 计算失败率或慢调用率之前所需的最小调用数（每个滑动窗口周期）
+                minimumNumberOfCalls: 100
+                # 自动从开启状态过渡到半开状态
+                automaticTransitionFromOpenToHalfOpenEnabled: false
+                # 开启过渡到半开应等待的时间
+                waitDurationInOpenState: 60000ms
+                # 半开状态下允许通过的调用次数
+                permittedNumberOfCallsInHalfOpenState: 10
+#                # 半开状态下请求最长等待时间
+#                maxWaitDurationInHalfOpenState: 0
+#                # 记录为失败并因此增加失败率的异常列表
+#                recordExceptions:
+#                # 被忽略且既不算失败也不算成功的异常列表
+#                ignoreExceptions:
+        instances:
+            myCircuitBreaker:
+                baseConfig: default
+    retry:
+        configs:
+            default:
+                # 最大重试次数
+                maxAttempts: 3
+                # 两次重试之间间隔
+                waitDuration: 1s
+#                # 需要进行重试Throwable列表
+#                retryExceptions:
+#                # 忽略重试Throwable列表
+#                ignoreExceptions:
+        instances:
+            myRetry:
+                baseConfig: default
+    ratelimiter:
+        configs:
+            default:
+                # 在一次刷新周期内，允许执行的最大请求数
+                limitForPeriod: 3
+                limitRefreshPeriod: 1s
+                # 线程等待执行的默认等待时间
+                timeoutDuration: 5s
+        instances:
+            myRateLimiter:
+                baseConfig: default
+    timelimiter:
+        configs:
+            default:
+                # 超时配置
+                timeoutDuration: 2s
+                # 异步调用，是否取消
+                cancelRunningFuture: true
+        instances:
+            myTimeLimiter:
+                baseConfig: default
+#    # 隔离机制
+#    bulkhead:
+#        configs:
+#            default:
+#                # 隔离允许线程并发执行的最大数量
+#                maxConcurrentCalls: 25
+#                # 被阻塞线程等待最长的时间
+#                maxWaitDuration: 0
+#    thread-pool-bulkhead:
+#        configs:
+#            default:
+#                maxThreadPoolSize: 1
+#                coreThreadPoolSize: 1
+#                queueCapacity: 1
